@@ -1,4 +1,4 @@
-package com.iescamp.tienda.modelo.cliente;
+package com.iescamp.tienda;
 
 import java.time.LocalDate;
 import java.util.Objects;
