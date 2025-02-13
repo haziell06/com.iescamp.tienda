@@ -52,4 +52,12 @@ public class Ropa extends Articulo {
     public int hashCode() {
         return Objects.hash(talla, color, tipoCierre);
     }
+
+    @Override
+    public String toString() {
+        return "Ropa" +
+                "talla:" + talla +
+                ", color:'" + color +
+                ", tipoCierre:" + tipoCierre;
+    }
 }

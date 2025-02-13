@@ -86,7 +86,14 @@ public class Articulo {
         return Objects.hash(codigoArticulo, nombre, precio, descripcion, imagen, activo);
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Articulo" +
+                "codigoArticulo:" + codigoArticulo +
+                ", nombre:" + nombre +
+                ", precio:" + precio +
+                ", descripcion:" + descripcion +
+                ", imagen:" + imagen +
+                ", activo:" + activo;
+    }
 }

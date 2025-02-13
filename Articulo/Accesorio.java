@@ -39,4 +39,11 @@ public class Accesorio {
     public int hashCode() {
         return Objects.hash(estilo, esPersonalizado);
     }
+
+    @Override
+    public String toString() {
+        return "Accesorio" +
+                "estilo:'" + estilo +
+                ", esPersonalizado:'" + esPersonalizado;
+    }
 }
