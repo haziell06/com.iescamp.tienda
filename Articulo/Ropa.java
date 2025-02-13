@@ -1,4 +1,4 @@
-package com.iescamp.tienda.modelo.Articulo;
+package com.iescamp.tienda;
 
 import java.util.Objects;
 
