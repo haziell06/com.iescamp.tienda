@@ -2,11 +2,11 @@ package com.iescamp.tienda.Subclases_Ropa;
 
 import com.iescamp.tienda.Ropa;
 
-public class Camilla extends Ropa {
+public class Camisa extends Ropa {
     private String tipoManga;
     private boolean esEstampada;
 
-    public Camilla(int talla, String color, String tipoCierre, String tipoManga, boolean esEstampada) {
+    public Camisa(int talla, String color, String tipoCierre, String tipoManga, boolean esEstampada) {
         super(talla, color, tipoCierre);
         this.tipoManga = tipoManga;
         this.esEstampada = esEstampada;
@@ -30,7 +30,7 @@ public class Camilla extends Ropa {
 
     @Override
     public String toString() {
-        return "Camilla" +
+        return "Camisa" +
                 "tipoManga:'" + tipoManga +
                 ", esEstampada:" + esEstampada;
     }
