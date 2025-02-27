@@ -8,18 +8,49 @@ public class Cliente extends Usuario {
     }
 
     private String direccionEnvio;
-    private float saldoCuenta=0;
-    private boolean tarjetaFidelidad=false;
-    private int numeroPedidos=1;
-    private String metodoPago="tajeta";
+    private float saldoCuenta;
+    private boolean tarjetaFidelidad;
+    private int numeroPedidos;
+    private MetodoPago metodoPago;
 
-    @Override
-    public void setNombre(String nombre) {
-        super.setNombre("juan");
+    public String getDireccionEnvio() {
+        return direccionEnvio;
     }
 
-    public Cliente() {
-        super();
+    public void setDireccionEnvio(String direccionEnvio) {
+        this.direccionEnvio = direccionEnvio;
+    }
+
+    public float getSaldoCuenta() {
+        return saldoCuenta;
+    }
+
+    public void setSaldoCuenta(float saldoCuenta) {
+        this.saldoCuenta = saldoCuenta;
+    }
+
+    public boolean isTarjetaFidelidad() {
+        return tarjetaFidelidad;
+    }
+
+    public void setTarjetaFidelidad(boolean tarjetaFidelidad) {
+        this.tarjetaFidelidad = tarjetaFidelidad;
+    }
+
+    public int getNumeroPedidos() {
+        return numeroPedidos;
+    }
+
+    public void setNumeroPedidos(int numeroPedidos) {
+        this.numeroPedidos = numeroPedidos;
+    }
+
+    public MetodoPago getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(MetodoPago metodoPago) {
+        this.metodoPago = metodoPago;
     }
 
     public void realizarPedido(String pedido) {
@@ -30,7 +61,4 @@ public class Cliente extends Usuario {
         pedido = pedido.toUpperCase(); // Mantiene la transformación a mayúsculas por si es útil
         System.out.println("Pedido registrado: " + pedido);
     }
-
-
-
 }
