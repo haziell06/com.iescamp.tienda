@@ -22,7 +22,6 @@ public class ConsoleUtil {
 
         return new Zapatos(cod_art, nombre, precio, marca, descripcion, true, imagen, color, material, estilo, activo, personalizado, TipoAccesorio.ZAPATOS, tipoSuela, tallaZapato);
     }
-
     public static Chaqueta crearChaqueta(Material material){
         System.out.println("Creando una Chaqueta...");
         int cod_art = readInt("Código del artículo: ");
@@ -30,14 +29,11 @@ public class ConsoleUtil {
         BigDecimal precio = BigDecimal.valueOf(readDouble("Precio: "));
         String marca = readString("Marca: ");
         String descripcion = readString("Descripción: ");
-        String imagen = readString("Imagen: ");
-        String color = readString("Color: ");
-        String estilo = readString("Estilo: ");
         boolean activo = readBoolean("¿Es activo? ");
-        String talla = readString("Talla: ");
+        String tallaRopa = readString("Talla: ");
         String tipoCierre = readString("Tipo cierre: ");
         boolean impermeable = readBoolean("¿Es impermeable? ");
 
-        return new Chaqueta(cod_art, nombre, precio, marca, descripcion, imagen, color, estilo, activo, talla, tipoCierre, impermeable);
+        return new Chaqueta(cod_art, nombre, precio, marca, descripcion, activo, tallaRopa, tipoCierre, impermeable);
     }
 }
