@@ -38,4 +38,17 @@ public class ConsoleUtil {
 
         return new Chaqueta(cod_art, nombre, precio, marca, descripcion, imagen, activo, tallaRopa, tipoCierre, impermeable);
     }
+
+        public static Bolso crearBolso(){
+        System.out.println("Creando un Bolso...");
+        String estilo = readString("Estilo: ");
+        String esPersonalizado = readString("¿Es personalizado? (Sí/No): ");
+        String tipoCierre = readString("Tipo de cierre: ");
+        int capacidad = readInt("Capacidad en litros: ");
+        
+        return new Bolso(estilo, esPersonalizado, tipoCierre, capacidad);
+
+
+
+    
 }
