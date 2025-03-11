@@ -47,13 +47,13 @@ public class ConsoleUtil {
         String marca = readString("Marca: ");
         String descripcion = readString("Descripción: ");
         String imagen = readString("Imagen: ");
-         boolean activo = readBoolean("¿Es activo? ");
+        boolean activo = readBoolean("¿Es activo? ");
         String estilo = readString("Estilo: ");
         boolean personalizado = readBoolean("¿Es personalizado? ");
         String tipoCierre = readString("Tipo de cierre: ");
         int capacidad = readInt("Capacidad en litros: ");
 
-        return new Bolso(cod_art, nombre, precio, marca, descipcion, imagen, activo, estilo, personalizado, tipoCierre, capacidad);
+        return new Bolso(cod_art, nombre, precio, marca, descripcion, imagen, activo, estilo, personalizado, tipoCierre, capacidad);
     }
 
     public static Camisa crearCamisa(Material material) {
