@@ -33,13 +33,14 @@ public class ConsoleUtil {
         String imagen = readString("Imagen: ");
         boolean activo = readBoolean("¿Es activo? ");
         int talla = readInt("Talla: ");
+        String color = readString("Color: ");
         String tipoCierre = readString("Tipo cierre: ");
         boolean impermeable = readBoolean("¿Es impermeable? ");
 
-        return new Chaqueta(cod_art, nombre, precio, marca, descripcion, imagen, activo, talla, tipoCierre, impermeable);
+        return new Chaqueta(cod_art, nombre, precio, marca, descripcion, imagen, activo, talla, color, tipoCierre, impermeable);
     }
 
-    public static Bolso crearBolso() {
+    public static Bolso crearBolso(Material material) {
         System.out.println("Creando un Bolso...");
         int cod_art = readInt("Código del artículo: ");
         String nombre = readString("Nombre: ");
@@ -72,5 +73,22 @@ public class ConsoleUtil {
         boolean esEstampada = readBoolean("¿Tiene Estampado? ");
 
         return new Camisa(cod_art, nombre, precio, descripcion, imagen, activo, marca, talla, color, tipoCierre, tipoManga, esEstampada);
+    }
+    public static Pantalon crearPantalon(Material material) {
+        System.out.println("Creando un Pantalon...");
+        int cod_art = readInt("Código del artículo: ");
+        String nombre = readString("Nombre: ");
+        BigDecimal precio = BigDecimal.valueOf(readDouble("Precio: "));
+        String descripcion = readString("Descripción: ");
+        String imagen = readString("Imagen: ");
+        boolean activo = readBoolean("¿Es activo? ");
+        String marca = readString("Marca: ");
+        int talla = readInt("Talla: ");
+        String color = readString("Color: ");
+        String tipoCierre = readString("Tipo cierre: ");
+        String tipoPantalon = readString("Tipo Pantalon:  ");
+        boolean tieneBolsillos = readBoolean("¿Tiene Bolsillos? ");
+
+        return new Pantalon(cod_art, nombre, precio, descripcion, imagen, activo, marca, talla, color, tipoCierre, tipoPantalon, tieneBolsillos);
     }
 }

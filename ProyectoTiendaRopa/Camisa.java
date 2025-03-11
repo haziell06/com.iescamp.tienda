@@ -1,5 +1,7 @@
 package com.iescamp.tienda;
 
+import java.math.BigDecimal;
+
 public class Camisa extends Ropa {
     private String tipoManga;
     private boolean esEstampada;
@@ -8,6 +10,10 @@ public class Camisa extends Ropa {
         super(talla, color, tipoCierre);
         this.tipoManga = tipoManga;
         this.esEstampada = esEstampada;
+    }
+
+    public Camisa(int codArt, String nombre, BigDecimal precio, String descripcion, String imagen, boolean activo, String marca, int talla, String color, String tipoCierre, String tipoManga, boolean esEstampada) {
+        super(talla, color, tipoCierre);
     }
 
     public String getTipoManga() {

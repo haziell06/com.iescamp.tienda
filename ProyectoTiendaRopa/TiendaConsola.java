@@ -22,7 +22,7 @@ public class TiendaConsola {
                     menuClientela();
                     break;
                 case 3:
-                    // actualizar una vez se haga
+                    menuCatálogo();
                     break;
                 case 4:
                     salir = true;
@@ -56,4 +56,35 @@ public class TiendaConsola {
                 System.out.println("Cliente añadido con éxito.");
             }
         }
+    public static void menuCatálogo() {
+        System.out.println("Menú Catálogo");
+        System.out.println("1- Añadir Chaqueta");
+        System.out.println("2- Añadir Camisa");
+        System.out.println("3- Añadir Pantalon");
+        System.out.println("4- Añadir Bolso");
+        System.out.println("5- Añadir Zapatos");
+        System.out.println("6- Volver");
+        int opcion = ConsoleReader.readInt("Seleccione una opción:");
+
+        switch (opcion) {
+            case 1:
+                ConsoleUtil.crearChaqueta(new Material(ConsoleReader.readInt("Introduzca el codigo"), ConsoleReader.readString("Escriba una descripción")));
+                break;
+            case 2:
+                ConsoleUtil.crearCamisa(new Material(ConsoleReader.readInt("Introduzca el codigo"), ConsoleReader.readString("Escriba una descripción")));
+                break;
+            case 3:
+                ConsoleUtil.crearPantalon(new Material(ConsoleReader.readInt("Introduzca el codigo"), ConsoleReader.readString("Escriba una descripción")));
+                break;
+            case 4:
+                ConsoleUtil.crearBolso(new Material(ConsoleReader.readInt("Introduzca el codigo"), ConsoleReader.readString("Escriba una descripción")));
+                break;
+            case 5:
+                ConsoleUtil.crearZapato(new Material(ConsoleReader.readInt("Introduzca el codigo"), ConsoleReader.readString("Escriba una descripción")));
+                break;
+            case 6:
+                System.out.println("Saliendo...");
+                return;
+        }
     }
+}

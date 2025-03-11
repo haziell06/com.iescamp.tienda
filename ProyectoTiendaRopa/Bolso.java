@@ -1,5 +1,7 @@
 package com.iescamp.tienda;
 
+import java.math.BigDecimal;
+
 public class Bolso extends Accesorio {
     private String tipoCierre;
     private int capacidad;
@@ -8,6 +10,9 @@ public class Bolso extends Accesorio {
         super(estilo, esPersonalizado);
         this.tipoCierre = tipoCierre;
         this.capacidad = capacidad;
+    }
+
+    public Bolso(int codArt, String nombre, BigDecimal precio, String marca, String descripcion, String imagen, boolean activo, String estilo, boolean personalizado, String tipoCierre, int capacidad) {
     }
 
     public String getTipoCierre() {

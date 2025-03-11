@@ -10,6 +10,10 @@ public class Chaqueta extends Ropa {
         this.impermeable = impermeable;
     }
 
+    public Chaqueta(int codArt, String nombre, BigDecimal precio, String marca, String descripcion, String imagen, boolean activo, int talla,String color, String tipoCierre, boolean impermeable) {
+        super(talla, color, tipoCierre);
+    }
+
     public boolean isImpermeable() {
         return impermeable;
     }
@@ -22,7 +26,6 @@ public class Chaqueta extends Ropa {
         return "Chaqueta" +
                 "impermeable:" + impermeable;
     }
-    Chaqueta chaqueta = new Chaqueta(32, "Negro", precio, "Botones", descripcion, imagen, color, estilo, true, talla, tipoCierre, impermeable);
     public void mostrarDetalles() {
         System.out.println(toString());
     }
