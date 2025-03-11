@@ -11,6 +11,18 @@ public class Clientela {
         this.clientes = new ArrayList<>();
     }
 
+    public static void setClientes(Cliente cliente) {
+    }
+
+    // getters y setters
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
     // Buscar por DNI
     public Cliente buscarDNI(String dni){
         for (Cliente cliente : clientes){
