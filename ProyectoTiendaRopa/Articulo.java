@@ -9,9 +9,10 @@ public class Articulo {
     private String descripcion;
     private String imagen;
     private boolean activo;
+    private String marca;
 
 
-    public Articulo(int codigoArticulo, String nombre, String descripcion, float precio, String imagen, boolean activo) {
+    public Articulo(int codigoArticulo, String nombre, String descripcion, float precio, String imagen, boolean activo, String marca) {
 
         this.codigoArticulo = codigoArticulo;
         this.nombre = nombre;
@@ -19,6 +20,7 @@ public class Articulo {
         this.precio = precio;
         this.imagen = imagen;
         this.activo = activo;
+        this.marca = marca;
     }
 
     public Articulo() {
@@ -73,6 +75,13 @@ public class Articulo {
         this.activo = activo;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -94,6 +103,7 @@ public class Articulo {
                 ", precio:" + precio +
                 ", descripcion:" + descripcion +
                 ", imagen:" + imagen +
-                ", activo:" + activo;
+                ", activo:" + activo +
+                ", marca:" + marca;
     }
 }
