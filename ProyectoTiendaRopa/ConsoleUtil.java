@@ -65,7 +65,7 @@ public class ConsoleUtil {
         String imagen = readString("Imagen: ");
         boolean activo = readBoolean("¿Es activo? ");
         String marca = readString("Marca: ");
-        int talla = readInt("Talla: ");
+        String talla = readString("Talla: ");
         String color = readString("Color: ");
         String tipoCierre = readString("Tipo cierre: ");
         String tipoManga = readString("Tipo Manga:  ");
@@ -73,7 +73,7 @@ public class ConsoleUtil {
 
         return new Camisa(cod_art, nombre, precio, descripcion, imagen, activo, marca, talla, color, tipoCierre, tipoManga, esEstampada);
     }
-        public static Pantalon crearPantalon(Material material) {
+    public static Pantalon crearPantalon(Material material) {
         System.out.println("Creando un Pantalon...");
         int cod_art = readInt("Código del artículo: ");
         String nombre = readString("Nombre: ");
