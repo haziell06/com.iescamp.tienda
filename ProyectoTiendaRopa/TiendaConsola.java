@@ -16,7 +16,7 @@ public class TiendaConsola {
 
             switch (opcion) {
                 case 1:
-                    // actualizar una vez se haga
+                    menuPlantilla();
                     break;
                 case 2:
                     menuClientela();
@@ -30,6 +30,27 @@ public class TiendaConsola {
                 default:
                     System.out.println("Opción no válida, intente de nuevo.");
             }
+        }
+    }
+        public static void menuPlantilla() {
+        System.out.println("Menu Plantilla");
+        System.out.println("1- Añadir empleado");
+        System.out.println("2- Volver");
+        int opcion = ConsoleReader.readInt("Elige una opción: ");
+
+        if (opcion == 2) {
+            String nombre = ConsoleReader.readString("Introduce el nombre del empleado: ");
+            String apellidos = ConsoleReader.readString("Introduce los apellidos del empleado: ");
+            String dni = ConsoleReader.readString("Introduce el DNI del empleado: ");
+            String telefono = ConsoleReader.readString("Introduce el teléfono del empleado: ");
+            String direccion = ConsoleReader.readString("Introduce la dirección del empleado: ");
+            String email = ConsoleReader.readString("Introduce el email del empleado: ");
+            LocalDate fechaNacimiento = LocalDate.parse(ConsoleReader.readString("Introduce la fecha de nacimiento del empleado (YYYY-MM-DD): "));
+            String password = ConsoleReader.readString("Introduce la contraseña del empleado: ");
+            boolean activo = ConsoleReader.readBoolean("¿Sigue en activo el empleado? (true/false): ");
+            
+            Empleado empleado = new Empleado(nombre, apellidos, dni, telefono, direccion, email, fechaNacimiento, password, activo);
+            Plantilla.setEmpleados(empleado);
         }
     }
 
