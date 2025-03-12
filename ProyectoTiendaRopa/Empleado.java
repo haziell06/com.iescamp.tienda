@@ -13,11 +13,6 @@ public class Empleado extends Usuario {
         this.departamento = departamento;
     }
 
-    public Empleado() {
-        super();
-        this.departamento = "Sin asignar"; // Evita que sea null
-    }
-
     // Getters y Setters
     public boolean isTienePrivilegios() {
         return tienePrivilegios;
