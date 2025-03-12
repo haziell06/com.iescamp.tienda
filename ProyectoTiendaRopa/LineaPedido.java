@@ -1,35 +1,39 @@
 package com.iescamp.tienda;
 
+import java.util.Objects;
+
 public class LineaPedido {
-    private int idLinea;
-    private int cantidad;
+    private Articulo articulo;
 
-    public LineaPedido(int idLinea, int cantidad) {
-        this.idLinea = idLinea;
-        this.cantidad = cantidad;
+    public LineaPedido(Articulo articulo) {
+        this.articulo = articulo;
     }
 
-    public int getIdLinea() {
-        return idLinea;
+    public Articulo getArticulo() {
+        return articulo;
     }
 
-    public void setIdLinea(int idLinea) {
-        this.idLinea = idLinea;
+    public void setArticulo(Articulo articulo) {
+        this.articulo = articulo;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineaPedido that = (LineaPedido) o;
+        return Objects.equals(articulo, that.articulo);
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    @Override
+    public int hashCode() {
+        return Objects.hash(articulo);
     }
 
     @Override
     public String toString() {
         return "LineaPedido{" +
-                "idLinea=" + idLinea +
-                ", cantidad=" + cantidad +
+                "articulo=" + articulo +
                 '}';
     }
 }
