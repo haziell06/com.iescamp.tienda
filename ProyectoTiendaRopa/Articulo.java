@@ -10,17 +10,19 @@ public class Articulo {
     private String imagen;
     private boolean activo;
     private String marca;
+    private String color;
+    private Material material;
 
-
-    public Articulo(int codigoArticulo, String nombre, String descripcion, float precio, String imagen, boolean activo, String marca) {
-
+    public Articulo(int codigoArticulo, String nombre, float precio, String descripcion, String imagen, boolean activo, String marca, String color, Material material) {
         this.codigoArticulo = codigoArticulo;
         this.nombre = nombre;
-        this.descripcion = descripcion;
         this.precio = precio;
+        this.descripcion = descripcion;
         this.imagen = imagen;
         this.activo = activo;
         this.marca = marca;
+        this.color = color;
+        this.material = material;
     }
 
     public Articulo() {
@@ -83,27 +85,47 @@ public class Articulo {
         this.marca = marca;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Articulo articulo = (Articulo) o;
-        return codigoArticulo == articulo.codigoArticulo && Float.compare(precio, articulo.precio) == 0 && activo == articulo.activo && Objects.equals(nombre, articulo.nombre) && Objects.equals(descripcion, articulo.descripcion) && Objects.equals(imagen, articulo.imagen);
+        return codigoArticulo == articulo.codigoArticulo && Float.compare(precio, articulo.precio) == 0 && activo == articulo.activo && Objects.equals(nombre, articulo.nombre) && Objects.equals(descripcion, articulo.descripcion) && Objects.equals(imagen, articulo.imagen) && Objects.equals(marca, articulo.marca) && Objects.equals(color, articulo.color) && Objects.equals(material, articulo.material);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigoArticulo, nombre, precio, descripcion, imagen, activo);
+        return Objects.hash(codigoArticulo, nombre, precio, descripcion, imagen, activo, marca, color, material);
     }
 
     @Override
     public String toString() {
-        return "Articulo" +
-                "codigoArticulo:" + codigoArticulo +
-                ", nombre:" + nombre +
-                ", precio:" + precio +
-                ", descripcion:" + descripcion +
-                ", imagen:" + imagen +
-                ", activo:" + activo +
-                ", marca:" + marca;
+        return "Articulo{" +
+                "codigoArticulo=" + codigoArticulo +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                ", descripcion='" + descripcion + '\'' +
+                ", imagen='" + imagen + '\'' +
+                ", activo=" + activo +
+                ", marca='" + marca + '\'' +
+                ", color='" + color + '\'' +
+                ", material=" + material +
+                '}';
     }
 }
