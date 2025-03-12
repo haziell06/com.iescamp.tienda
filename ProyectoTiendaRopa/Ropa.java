@@ -4,23 +4,23 @@ import java.util.Objects;
 
 public class Ropa extends Articulo {
 
-    private int talla;
+    private String talla;
     private String color;
     private String tipoCierre;
 
 
-    public Ropa(int talla, String color, String tipoCierre) {
+    public Ropa(String talla, String color, String tipoCierre) {
         super();
         this.talla = talla;
         this.color = color;
         this.tipoCierre = tipoCierre;
     }
 
-    public int getTalla() {
+    public String getTalla() {
         return talla;
     }
 
-    public void setTalla(int talla) {
+    public void setTalla(String talla) {
         this.talla = talla;
     }
 
