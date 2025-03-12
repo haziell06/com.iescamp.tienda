@@ -1,34 +1,42 @@
 package com.iescamp.tienda;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Objects;
 
-public class Pedido extends  Cliente{
-    public Pedido(String DNI, String nombre, String direccion, String apellidos, String telefono, String email, LocalDate fechaNacimiento, String password, boolean activo) {
-        super(DNI, nombre, direccion, apellidos, telefono, email, fechaNacimiento, password, activo);
-    }
+public class Pedido{
 
-
-
-    private int numeroPedido;
-    private LocalDate fechaPedido;
+    private int numero;
+    private LocalDate fecha;
     private String estado;
-    private String direccEntrega;
+    private String dir_envio;
+    private Cliente cliente;
 
-    public int getNumeroPedido() {
-        return numeroPedido;
+    private ArrayList<LineaPedido> lineaPedidos;
+
+    public Pedido(int numero, LocalDate fecha, String estado, String dir_envio, Cliente cliente, ArrayList<LineaPedido> lineaPedidos) {
+        this.numero = numero;
+        this.fecha = fecha;
+        this.estado = estado;
+        this.dir_envio = dir_envio;
+        this.cliente = cliente;
+        this.lineaPedidos = lineaPedidos;
     }
 
-    public void setNumeroPedido(int numeroPedido) {
-        this.numeroPedido = numeroPedido;
+    public int getNumero() {
+        return numero;
     }
 
-    public String getDireccEntrega() {
-        return direccEntrega;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
-    public void setDireccEntrega(String direccEntrega) {
-        this.direccEntrega = direccEntrega;
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
     public String getEstado() {
@@ -39,35 +47,52 @@ public class Pedido extends  Cliente{
         this.estado = estado;
     }
 
-    public LocalDate getFechaPedido() {
-        return fechaPedido;
+    public String getDir_envio() {
+        return dir_envio;
     }
 
-    public void setFechaPedido(LocalDate fechaPedido) {
-        this.fechaPedido = fechaPedido;
+    public void setDir_envio(String dir_envio) {
+        this.dir_envio = dir_envio;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public ArrayList<LineaPedido> getLineaPedidos() {
+        return lineaPedidos;
+    }
+
+    public void setLineaPedidos(ArrayList<LineaPedido> lineaPedidos) {
+        this.lineaPedidos = lineaPedidos;
+    }
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
         Pedido pedido = (Pedido) o;
-        return numeroPedido == pedido.numeroPedido && Objects.equals(fechaPedido, pedido.fechaPedido) && Objects.equals(estado, pedido.estado) && Objects.equals(direccEntrega, pedido.direccEntrega);
+        return numero == pedido.numero && Objects.equals(fecha, pedido.fecha) && Objects.equals(estado, pedido.estado) && Objects.equals(dir_envio, pedido.dir_envio) && Objects.equals(cliente, pedido.cliente) && Objects.equals(lineaPedidos, pedido.lineaPedidos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), numeroPedido, fechaPedido, estado, direccEntrega);
+        return Objects.hash(numero, fecha, estado, dir_envio, cliente, lineaPedidos);
     }
 
     @Override
     public String toString() {
         return "Pedido{" +
-                "numeroPedido=" + numeroPedido +
-                ", fechaPedido=" + fechaPedido +
+                "numero=" + numero +
+                ", fecha=" + fecha +
                 ", estado='" + estado + '\'' +
-                ", direccEntrega='" + direccEntrega + '\'' +
+                ", dir_envio='" + dir_envio + '\'' +
+                ", cliente=" + cliente +
+                ", lineaPedidos=" + lineaPedidos +
                 '}';
     }
 }
