@@ -6,7 +6,7 @@ public class Bolso extends Accesorio {
     private String tipoCierre;
     private int capacidad;
 
-    public Bolso(String estilo, String esPersonalizado, String tipoCierre, int capacidad) {
+    public Bolso(String estilo, Boolean esPersonalizado, String tipoCierre, int capacidad) {
         super(estilo, esPersonalizado);
         this.tipoCierre = tipoCierre;
         this.capacidad = capacidad;
