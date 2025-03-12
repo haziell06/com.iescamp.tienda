@@ -26,7 +26,7 @@ public class Clientela {
     // Buscar por DNI
     public Cliente buscarDNI(String dni){
         for (Cliente cliente : clientes){
-            if (cliente.getDNI().equalsIgnoreCase(dni))
+            if (cliente.getDni().equalsIgnoreCase(dni))
                 return cliente;
         }
         return null; //esto será cuando no se encuentre al cliente
