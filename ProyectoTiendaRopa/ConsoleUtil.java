@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import static com.iescamp.tienda.ConsoleReader.*;
 
 public class ConsoleUtil {
-    public static Zapatos crearZapato(Material material) {
+    public static Zapato crearZapato(Material material) {
         System.out.println("Creando un Zapato...");
         int cod_art = readInt("Código del artículo: ");
         String nombre = readString("Nombre: ");
@@ -20,7 +20,7 @@ public class ConsoleUtil {
         String tipoSuela = readString("Tipo de suela: ");
         int tallaZapato = readInt("Talla del zapato: ");
 
-        return new Zapatos(cod_art, nombre, precio, marca, descripcion, true, imagen, color, material, estilo, activo, personalizado, TipoAccesorio.ZAPATOS, tipoSuela, tallaZapato);
+        return new Zapato(cod_art, nombre, precio, marca, descripcion, true, imagen, color, material, estilo, activo, personalizado, TipoAccesorio.ZAPATOS, tipoSuela, tallaZapato);
     }
 
     public static Chaqueta crearChaqueta(Material material){
