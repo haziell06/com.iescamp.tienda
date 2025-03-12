@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Empleado extends Usuario {
-    private boolean tienePrivilegios = false;
-    private String departamento = "Sin asignar"; // Se inicializa para evitar null
+    private boolean tienePrivilegios;
+    private String departamento;
 
-    public Empleado(String DNI, String nombre, String direccion, String apellidos, String telefono, String email, LocalDate fechaNacimiento, String password, boolean activo, boolean tienePrivilegios, String departamento) {
-        super(DNI, nombre, direccion, apellidos, telefono, email, fechaNacimiento, password, activo);
+    public Empleado(String dni, String nombre, String apellidos, String direccion, String telefono, String e_mail, LocalDate f_nacimiento, String pass, boolean activo) {
+        super(dni, nombre, apellidos, direccion, telefono, e_mail, f_nacimiento, pass, activo);
         this.tienePrivilegios = tienePrivilegios;
         this.departamento = departamento;
     }
