@@ -3,7 +3,7 @@ package com.iescamp.tienda;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Usuario {
+abstract class Usuario {
 
     /**
      * @param {User}
