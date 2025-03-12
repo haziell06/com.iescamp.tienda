@@ -50,7 +50,7 @@ public class TiendaConsola {
             boolean activo = ConsoleReader.readBoolean("¿Sigue en activo el empleado? (true/false): ");
             
             Empleado empleado = new Empleado(nombre, apellidos, dni, telefono, direccion, email, fechaNacimiento, password, activo);
-            Plantilla.setEmpleados(empleado);
+            empleado.add
         }
     }
 
