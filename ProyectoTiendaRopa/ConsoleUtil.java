@@ -39,7 +39,7 @@ public class ConsoleUtil {
         return new Chaqueta(cod_art, nombre, precio, marca, descripcion, imagen, activo, talla, tipoCierre, impermeable);
     }
 
-    public static Bolso crearBolso() {
+    public static Bolso crearBolso(Material material) {
         System.out.println("Creando un Bolso...");
         int cod_art = readInt("Código del artículo: ");
         String nombre = readString("Nombre: ");
