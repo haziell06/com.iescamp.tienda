@@ -25,7 +25,7 @@ public class Plantilla {
 
     public Empleado buscarDNI(String DNI) {
         for (Empleado empleado : plantillas) {
-            if (empleado.getDNI().equals(DNI)) {
+            if (empleado.getDni().equals(DNI)) {
                 return empleado;
             }
         }
