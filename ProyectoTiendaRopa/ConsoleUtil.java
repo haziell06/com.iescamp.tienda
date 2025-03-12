@@ -82,7 +82,7 @@ public class ConsoleUtil {
         String imagen = readString("Imagen: ");
         boolean activo = readBoolean("¿Es activo? ");
         String marca = readString("Marca: ");
-        int talla = readInt("Talla: ");
+        String talla = readString("Talla: ");
         String color = readString("Color: ");
         String tipoCierre = readString("Tipo cierre: ");
         String tipoPantalon = readString("Tipo Pantalon:  ");
