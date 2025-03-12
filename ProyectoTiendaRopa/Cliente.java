@@ -1,40 +1,49 @@
 package com.iescamp.tienda;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Cliente extends Usuario {
-    public Cliente(String DNI, String nombre, String direccion, String apellidos, String telefono, String email, LocalDate fechaNacimiento, String password, boolean activo) {
-        super(DNI, nombre, direccion, apellidos, telefono, email, fechaNacimiento, password, activo);
-    }
-
-    private String direccionEnvio;
-    private float saldoCuenta;
-    private boolean tarjetaFidelidad;
+    private String dir_envio;
+    private float saldo_cuenta;
+    private boolean tarjeta_fidelizacion;
     private int numeroPedidos;
     private MetodoPago metodoPago;
+    private ArrayList<Pedido> pedidos;
 
-    public String getDireccionEnvio() {
-        return direccionEnvio;
+    public Cliente(String dni, String nombre, String apellidos, String direccion, String telefono, String e_mail, LocalDate f_nacimiento, String pass, boolean activo) {
+        super(dni, nombre, apellidos, direccion, telefono, e_mail, f_nacimiento, pass, activo);
+        this.dir_envio = dir_envio;
+        this.saldo_cuenta = saldo_cuenta;
+        this.tarjeta_fidelizacion = tarjeta_fidelizacion;
+        this.numeroPedidos = numeroPedidos;
+        this.metodoPago = metodoPago;
+        this.pedidos = pedidos;
     }
 
-    public void setDireccionEnvio(String direccionEnvio) {
-        this.direccionEnvio = direccionEnvio;
+    public String getDir_envio() {
+        return dir_envio;
     }
 
-    public float getSaldoCuenta() {
-        return saldoCuenta;
+    public void setDir_envio(String dir_envio) {
+        this.dir_envio = dir_envio;
     }
 
-    public void setSaldoCuenta(float saldoCuenta) {
-        this.saldoCuenta = saldoCuenta;
+    public float getSaldo_cuenta() {
+        return saldo_cuenta;
     }
 
-    public boolean isTarjetaFidelidad() {
-        return tarjetaFidelidad;
+    public void setSaldo_cuenta(float saldo_cuenta) {
+        this.saldo_cuenta = saldo_cuenta;
     }
 
-    public void setTarjetaFidelidad(boolean tarjetaFidelidad) {
-        this.tarjetaFidelidad = tarjetaFidelidad;
+    public boolean isTarjeta_fidelizacion() {
+        return tarjeta_fidelizacion;
+    }
+
+    public void setTarjeta_fidelizacion(boolean tarjeta_fidelizacion) {
+        this.tarjeta_fidelizacion = tarjeta_fidelizacion;
     }
 
     public int getNumeroPedidos() {
@@ -51,6 +60,40 @@ public class Cliente extends Usuario {
 
     public void setMetodoPago(MetodoPago metodoPago) {
         this.metodoPago = metodoPago;
+    }
+
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ArrayList<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Cliente cliente = (Cliente) o;
+        return Float.compare(saldo_cuenta, cliente.saldo_cuenta) == 0 && tarjeta_fidelizacion == cliente.tarjeta_fidelizacion && numeroPedidos == cliente.numeroPedidos && Objects.equals(dir_envio, cliente.dir_envio) && Objects.equals(metodoPago, cliente.metodoPago) && Objects.equals(pedidos, cliente.pedidos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), dir_envio, saldo_cuenta, tarjeta_fidelizacion, numeroPedidos, metodoPago, pedidos);
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "dir_envio='" + dir_envio + '\'' +
+                ", saldo_cuenta=" + saldo_cuenta +
+                ", tarjeta_fidelizacion=" + tarjeta_fidelizacion +
+                ", numeroPedidos=" + numeroPedidos +
+                ", metodoPago=" + metodoPago +
+                ", pedidos=" + pedidos +
+                '}';
     }
 
     public void realizarPedido(String pedido) {
