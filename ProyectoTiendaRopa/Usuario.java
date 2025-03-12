@@ -13,37 +13,34 @@ public class Usuario {
 
 
 
-    private String DNI="12345678A";
-    private String nombre="Manolo";
-    private String apellidos="Garcia";
-    private String direccion="calle 123";
-    private String telefono="123456789";
-    private String email="manolo@gmail.com";
-    private LocalDate fechaNacimiento=LocalDate.now();
-    private String password="123456";
-    private boolean activo=true;
+    private String dni;
+    private String nombre;
+    private String apellidos;
+    private String direccion;
+    private String telefono;
+    private String e_mail;
+    private LocalDate f_nacimiento;
+    private String pass;
+    private boolean activo;
 
-
-    public Usuario(String DNI, String nombre, String direccion, String apellidos, String telefono, String email, LocalDate fechaNacimiento, String password, boolean activo) {
-        this.DNI = DNI;
+    public Usuario(String dni, String nombre, String apellidos, String direccion, String telefono, String e_mail, LocalDate f_nacimiento, String pass, boolean activo) {
+        this.dni = dni;
         this.nombre = nombre;
-        this.direccion = direccion;
         this.apellidos = apellidos;
+        this.direccion = direccion;
         this.telefono = telefono;
-        this.email = email;
-        this.fechaNacimiento = fechaNacimiento;
-        this.password = password;
+        this.e_mail = e_mail;
+        this.f_nacimiento = f_nacimiento;
+        this.pass = pass;
         this.activo = activo;
     }
 
-    public Usuario() {}
-
-    public String getDNI() {
-        return DNI;
+    public String getDni() {
+        return dni;
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -78,28 +75,28 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
+    public String getE_mail() {
+        return e_mail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setE_mail(String e_mail) {
+        this.e_mail = e_mail;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public LocalDate getF_nacimiento() {
+        return f_nacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setF_nacimiento(LocalDate f_nacimiento) {
+        this.f_nacimiento = f_nacimiento;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public boolean isActivo() {
@@ -110,33 +107,31 @@ public class Usuario {
         this.activo = activo;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Usuario user = (Usuario) o;
-        return Objects.equals(DNI, user.DNI) && Objects.equals(telefono, user.telefono) && Objects.equals(email, user.email);
+        Usuario usuario = (Usuario) o;
+        return activo == usuario.activo && Objects.equals(dni, usuario.dni) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellidos, usuario.apellidos) && Objects.equals(direccion, usuario.direccion) && Objects.equals(telefono, usuario.telefono) && Objects.equals(e_mail, usuario.e_mail) && Objects.equals(f_nacimiento, usuario.f_nacimiento) && Objects.equals(pass, usuario.pass);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(DNI, telefono, email);
+        return Objects.hash(dni, nombre, apellidos, direccion, telefono, e_mail, f_nacimiento, pass, activo);
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "DNI='" + DNI + '\'' +
+        return "Usuario{" +
+                "dni='" + dni + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
-                ", email='" + email + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
-                ", password='" + password + '\'' +
+                ", e_mail='" + e_mail + '\'' +
+                ", f_nacimiento=" + f_nacimiento +
+                ", pass='" + pass + '\'' +
                 ", activo=" + activo +
                 '}';
     }
 }
-
