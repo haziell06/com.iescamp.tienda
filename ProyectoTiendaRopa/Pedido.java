@@ -10,16 +10,17 @@ public class Pedido{
     private LocalDate fecha;
     private String estado;
     private String dir_envio;
-    private Cliente cliente;
-
+    private MetodoPago m_pago;
+    private Cliente DNI_cliente;
     private ArrayList<LineaPedido> lineaPedidos;
 
-    public Pedido(int numero, LocalDate fecha, String estado, String dir_envio, Cliente cliente, ArrayList<LineaPedido> lineaPedidos) {
+    public Pedido(int numero, LocalDate fecha, String estado, String dir_envio, Cliente cliente, MetodoPago m_pago, ArrayList<LineaPedido> lineaPedidos) {
         this.numero = numero;
         this.fecha = fecha;
         this.estado = estado;
         this.dir_envio = dir_envio;
-        this.cliente = cliente;
+        this.m_pago = m_pago;
+        this.DNI_cliente = cliente;
         this.lineaPedidos = lineaPedidos;
     }
 
@@ -55,12 +56,20 @@ public class Pedido{
         this.dir_envio = dir_envio;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public MetodoPago getM_pago() {
+        return m_pago;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setM_pago(MetodoPago m_pago) {
+        this.m_pago = m_pago;
+    }
+
+    public Cliente getDNI_cliente() {
+        return DNI_cliente;
+    }
+
+    public void setDNI_cliente(Cliente DNI_cliente) {
+        this.DNI_cliente = DNI_cliente;
     }
 
     public ArrayList<LineaPedido> getLineaPedidos() {
@@ -73,15 +82,14 @@ public class Pedido{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pedido pedido = (Pedido) o;
-        return numero == pedido.numero && Objects.equals(fecha, pedido.fecha) && Objects.equals(estado, pedido.estado) && Objects.equals(dir_envio, pedido.dir_envio) && Objects.equals(cliente, pedido.cliente) && Objects.equals(lineaPedidos, pedido.lineaPedidos);
+        return numero == pedido.numero && Objects.equals(fecha, pedido.fecha) && Objects.equals(estado, pedido.estado) && Objects.equals(dir_envio, pedido.dir_envio) && Objects.equals(m_pago, pedido.m_pago) && Objects.equals(DNI_cliente, pedido.DNI_cliente) && Objects.equals(lineaPedidos, pedido.lineaPedidos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numero, fecha, estado, dir_envio, cliente, lineaPedidos);
+        return Objects.hash(numero, fecha, estado, dir_envio, m_pago, DNI_cliente, lineaPedidos);
     }
 
     @Override
@@ -91,7 +99,8 @@ public class Pedido{
                 ", fecha=" + fecha +
                 ", estado='" + estado + '\'' +
                 ", dir_envio='" + dir_envio + '\'' +
-                ", cliente=" + cliente +
+                ", m_pago=" + m_pago +
+                ", DNI_cliente=" + DNI_cliente +
                 ", lineaPedidos=" + lineaPedidos +
                 '}';
     }
