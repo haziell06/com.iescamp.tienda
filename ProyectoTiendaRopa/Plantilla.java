@@ -59,4 +59,13 @@ public class Plantilla {
         }
         return NomBuscado;
     }
+
+    // metodo para añadir empleados
+    public void agregarEmpleado(Empleado empleado) {
+        if (empleado != null) {
+            this.plantillas.add(empleado);
+        } else {
+            System.out.println("Error");
+        }
+    }
 }
