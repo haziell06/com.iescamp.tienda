@@ -1,6 +1,7 @@
 package com.iescamp.tienda;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class TiendaConsola {
     public static void main(String[] args) {
@@ -48,9 +49,11 @@ public class TiendaConsola {
             LocalDate fechaNacimiento = LocalDate.parse(ConsoleReader.readString("Introduce la fecha de nacimiento del empleado (YYYY-MM-DD): "));
             String password = ConsoleReader.readString("Introduce la contraseña del empleado: ");
             boolean activo = ConsoleReader.readBoolean("¿Sigue en activo el empleado? (true/false): ");
-            
-            Empleado empleado = new Empleado(nombre, apellidos, dni, telefono, direccion, email, fechaNacimiento, password, activo);
-            empleado.add
+            boolean tienePrivilegios = ConsoleReader.readBoolean("¿Tiene privilegios? (true/false): ");
+            String departamento = ConsoleReader.readString("Introduce el nombre del departamento: ");
+
+            Empleado empleado = new Empleado(nombre, apellidos, dni, telefono, direccion, email, fechaNacimiento, password, activo, tienePrivilegios, departamento);
+            empleado
         }
     }
 
@@ -70,8 +73,15 @@ public class TiendaConsola {
             LocalDate fechaNacimiento = LocalDate.parse(ConsoleReader.readString("Ingrese la fecha de nacimiento (YYYY-MM-DD):"));
             String password = ConsoleReader.readString("Ingrese la contraseña del cliente:");
             boolean activo = ConsoleReader.readBoolean("¿Está activo el cliente? (true/false):");
+            String dir_envio = ConsoleReader.readString("Ingrese la dirección de envío:");
+            float saldo_cuenta = ConsoleReader.readFloat("Ingrese el saldo de la cuenta: ");
+            boolean tarjeta_fidelizacion = ConsoleReader.readBoolean("¿Tiene tarjeta de fidelización? (true/false)");
+            int numeroPedidos = ConsoleReader.readInt("Ingrese el número de pedidos: ");
+            MetodoPago metodoPago = new MetodoPago(ConsoleReader.readInt("Ingrese el código del método de pago: "),ConsoleReader.readString("Ingrese la descripción del metodo de pago: "));
+            ArrayList<Pedido> pedidos = new ArrayList<>();
 
-            Cliente cliente = new Cliente(dni, nombre, direccion, apellidos, telefono, email, fechaNacimiento, password, activo);
+
+            Cliente cliente = new Cliente(dni, nombre, direccion, apellidos, telefono, email, fechaNacimiento, password, activo, dir_envio, saldo_cuenta, tarjeta_fidelizacion, numeroPedidos, metodoPago, pedidos);
             Clientela.setClientes(cliente);
 
             System.out.println("Cliente añadido con éxito.");
