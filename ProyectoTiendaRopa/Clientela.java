@@ -7,12 +7,10 @@ public class Clientela {
     private List<Cliente> clientes;
 
     // constructor
-    public Clientela(List<Cliente> clientes) {
-        this.clientes = clientes;
+    public Clientela(){
+        this.clientes = new ArrayList<>();
     }
-
-    public static void setClientes(Cliente cliente) {
-    }
+    
 
     // getters y setters
     public List<Cliente> getClientes() {
