@@ -7,7 +7,7 @@ public class Empleado extends Usuario {
     private boolean tienePrivilegios;
     private String departamento;
 
-    public Empleado(String dni, String nombre, String apellidos, String direccion, String telefono, String e_mail, LocalDate f_nacimiento, String pass, boolean activo) {
+    public Empleado(String dni, String nombre, String apellidos, String direccion, String telefono, String e_mail, LocalDate f_nacimiento, String pass, boolean activo, boolean tienePrivilegios, String departamento) {
         super(dni, nombre, apellidos, direccion, telefono, e_mail, f_nacimiento, pass, activo);
         this.tienePrivilegios = tienePrivilegios;
         this.departamento = departamento;
