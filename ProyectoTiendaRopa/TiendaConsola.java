@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class TiendaConsola {
     public static void main(String[] args) {
         boolean salir = false;
+        ArrayList<Empleado> listaEmpleados = new ArrayList<>();
+        Plantilla plantilla = new Plantilla(listaEmpleados);
 
         while (!salir) {
             System.out.println("Menú Principal");
@@ -53,7 +55,12 @@ public class TiendaConsola {
             String departamento = ConsoleReader.readString("Introduce el nombre del departamento: ");
 
             Empleado empleado = new Empleado(nombre, apellidos, dni, telefono, direccion, email, fechaNacimiento, password, activo, tienePrivilegios, departamento);
-            empleado
+            
+            //añadir empleado a plantilla
+            Plantilla plantilla = new Plantilla();
+            plantilla.agregarEmpleado(empleado);
+
+            System.out.println("Empleado añadido con éxito.");
         }
     }
 
@@ -82,8 +89,10 @@ public class TiendaConsola {
 
 
             Cliente cliente = new Cliente(dni, nombre, direccion, apellidos, telefono, email, fechaNacimiento, password, activo, dir_envio, saldo_cuenta, tarjeta_fidelizacion, numeroPedidos, metodoPago, pedidos);
-            Clientela.setClientes(cliente);
-
+            // añadir cliente a clientela
+            Clientela clientela = new Clientela();
+            clientela.agregarCliente(cliente);
+                    
             System.out.println("Cliente añadido con éxito.");
         }
     }
