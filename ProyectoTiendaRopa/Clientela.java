@@ -7,8 +7,8 @@ public class Clientela {
     private List<Cliente> clientes;
 
     // constructor
-    public Clientela(){
-        this.clientes = new ArrayList<>();
+    public Clientela(List<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
     public static void setClientes(Cliente cliente) {
