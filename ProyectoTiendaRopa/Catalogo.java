@@ -3,10 +3,14 @@ package com.iescamp.tienda;
 import java.util.ArrayList;
 
 public class Catalogo {
-    private ArrayList<Articulo> catalogo = new ArrayList<>();
+    private ArrayList<Articulo> catalogo;
 
     public Catalogo(ArrayList<Articulo> catalogo) {
         this.catalogo = catalogo;
+    }
+    
+    public Catalogo() {
+        catalogo = new ArrayList<>();
     }
 
     public ArrayList<Articulo> getCatalogo() {
