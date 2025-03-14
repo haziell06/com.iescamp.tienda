@@ -38,7 +38,7 @@ public class TiendaConsola {
         System.out.println("2- Volver");
         int opcion = ConsoleReader.readInt("Elige una opción: ");
 
-        if (opcion == 2) {
+        if (opcion == 1) {
             String nombre = ConsoleReader.readString("Introduce el nombre del empleado: ");
             String apellidos = ConsoleReader.readString("Introduce los apellidos del empleado: ");
             String dni = ConsoleReader.readString("Introduce el DNI del empleado: ");
