@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Clientela {
-    private List<Cliente> clientes;
+   private ArrayList<Cliente> clientes;
 
     // constructor
-    public Clientela(){
-        this.clientes = new ArrayList<>();
+    public Clientela(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    public Clientela() {
+        clientes = new ArrayList<>();
     }
     
 
