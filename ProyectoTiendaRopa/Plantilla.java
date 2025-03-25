@@ -3,7 +3,8 @@ package com.iescamp.tienda;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Plantilla {
+public class Plantilla implements Serializable{
+    private static final long serialVersionUID = 1L;
     private ArrayList<Empleado> plantillas = new ArrayList<>();
 
     public Plantilla(ArrayList<Empleado> plantillas) {
