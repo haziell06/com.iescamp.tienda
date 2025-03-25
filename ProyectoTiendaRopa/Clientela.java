@@ -3,7 +3,8 @@ package com.iescamp.tienda;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Clientela {
+public class Clientela implements Serializable {
+   private static final long serialVersionUID = 1L;
    private ArrayList<Cliente> clientes;
 
     // constructor
