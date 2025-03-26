@@ -1,13 +1,11 @@
 package com.iescamp.tienda.dao;
 
-import com.iescamp.tienda.Cliente;
-import com.iescamp.tienda.LineaPedido;
-import com.iescamp.tienda.MetodoPago;
-import com.iescamp.tienda.Pedido;
+import com.iescamp.tienda.*;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PedidoDAO implements GenericDAO <Pedido, Integer> {
 
@@ -17,11 +15,11 @@ public class PedidoDAO implements GenericDAO <Pedido, Integer> {
     }
 
     @Override
-    public Pedido obtenerPorId(Integer id) {
-        String sql = "SELECT * FROM libro WHERE id = ?";
+    public Pedido obtenerPorId(Integer numero) {
+        String sql = "SELECT * FROM PEDIDO WHERE numero = ?";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
+            stmt.setInt(1, numero);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return construirDesdeResultSet(rs);
@@ -34,12 +32,43 @@ public class PedidoDAO implements GenericDAO <Pedido, Integer> {
     }
 
     @Override
+    public List<Pedido> obtenerTodos() {
+        List<Pedido> pedidos = new ArrayList<>();
+        String sql = "SELECT * FROM PEDIDO";
+        try (Connection conn = DBUtil.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                pedidos.add(construirDesdeResultSet(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pedidos;
+    }
+
+    public List<Pedido> obtenerPedidosPorCliente() {
+        List<Pedido> pedidos = new ArrayList<>();
+        String sql = "SELECT * FROM PEDIDO where CLIENTE.DNI = ?";
+        try (Connection conn = DBUtil.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                pedidos.add(construirDesdeResultSet(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pedidos;
+    }
+
+    @Override
     public void actualizar(Pedido obj) {
         // metodo void, se hará más adelante
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void eliminar(Integer numero) {
         // metodo void, se hará más adelante
     }
 

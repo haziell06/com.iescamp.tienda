@@ -1,23 +1,20 @@
 package com.iescamp.tienda.dao;
 
-import com.iescamp.tienda.Cliente;
-import com.iescamp.tienda.MetodoPago;
-import com.iescamp.tienda.Pedido;
+import com.iescamp.tienda.Empleado;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteDAO implements GenericDAO <Cliente, String> {
-
+public class EmpleadoDAO implements GenericDAO<Empleado, String> {
     @Override
-    public void insertar(Cliente obj) {
-        // metodo void, se hará más adelante
+    public void insertar(Empleado obj) {
+
     }
 
     @Override
-    public Cliente obtenerPorId(String DNI) {
+    public Empleado obtenerPorId(String DNI) {
         String sql = "SELECT * FROM CLIENTE WHERE DNI = ?";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -34,44 +31,52 @@ public class ClienteDAO implements GenericDAO <Cliente, String> {
     }
 
     @Override
-    public List<Cliente> obtenerTodos() {
-        List<Cliente> clientes = new ArrayList<>();
-        String sql = "SELECT * FROM CLIENTE";
+    public List<Empleado> obtenerTodos() {
+        List<Empleado> empleados = new ArrayList<>();
+        String sql = "SELECT * FROM EMPLEADO";
         try (Connection conn = DBUtil.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                clientes.add(construirDesdeResultSet(rs));
+                empleados.add(construirDesdeResultSet(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return clientes;
+        return empleados;
+    }
+
+    public List<Empleado> obtenerEmpleadoPorDepartamento() {
+        List<Empleado> empleados = new ArrayList<>();
+        String sql = "SELECT * FROM EMPLEADO where DEPARTAMENTO.codigo = ?";
+        try (Connection conn = DBUtil.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                empleados.add(construirDesdeResultSet(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return empleados;
     }
 
     @Override
-    public void actualizar(Cliente obj) {
-        // metodo void, se hará más adelante
+    public void actualizar(Empleado obj) {
+
     }
 
     @Override
     public void eliminar(String DNI) {
-        // metodo void, se hará más adelante
+
     }
 
     @Override
-    public Cliente construirDesdeResultSet(ResultSet rs) throws SQLException {
+    public Empleado construirDesdeResultSet(ResultSet rs) throws SQLException {
         java.sql.Date sqlDate = rs.getDate("fecha");
         LocalDate f_nacimiento = (sqlDate != null) ? sqlDate.toLocalDate() : null;
-        Array array = rs.getArray("pedidos");
-        Pedido[] pedidosArray = (array != null) ? (Pedido[]) array.getArray() : new Pedido[0];
 
-        // Convertir el arreglo a un ArrayList
-        ArrayList<Pedido> pedidos = new ArrayList<>();
-        for (Pedido pedido : pedidosArray) {
-            pedidos.add(pedido);
-        }
-        return  new Cliente(
+        return  new Empleado(
                 rs.getString("dni"),
                 rs.getString("nombre"),
                 rs.getString("apellidos"),
@@ -81,13 +86,9 @@ public class ClienteDAO implements GenericDAO <Cliente, String> {
                 f_nacimiento,
                 rs.getString("pass"),
                 rs.getBoolean("activo"),
-                rs.getString("dir_envio"),
-                rs.getFloat("saldo_cuenta"),
-                rs.getBoolean("tarjeta_fidelizacion"),
-                rs.getInt("numeroPedidos"),
-                (MetodoPago) rs.getObject("m_pago"),
-                pedidos
-        );
-    }
+                rs.getBoolean("tienePrivilegios"),
+                rs.getString("departamento")
+                );
 
+    }
 }
