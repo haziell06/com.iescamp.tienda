@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Plantilla implements Serializable{
+public class Plantilla implements Serializable {
     private static final long serialVersionUID = 1L;
-    private ArrayList<Empleado> plantillas = new ArrayList<>();
+    private ArrayList<Empleado> plantillas;
+    public Plantilla() {
+        plantillas = new ArrayList<>();
+    }
 
     public Plantilla(ArrayList<Empleado> plantillas) {
         this.plantillas = plantillas;
@@ -65,7 +68,7 @@ public class Plantilla implements Serializable{
     // metodo para añadir empleados
     public void agregarEmpleado(Empleado empleado) {
         if (empleado != null) {
-            this.plantillas.add(empleado);
+            plantillas.add(empleado);
         } else {
             System.out.println("Error");
         }
