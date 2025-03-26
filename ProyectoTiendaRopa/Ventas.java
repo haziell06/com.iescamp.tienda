@@ -33,7 +33,7 @@ public class Ventas implements Serializable{
     public ArrayList<Pedido> filtarCliente(String cliente) {
         ArrayList<Pedido> clienteBuscado = new ArrayList<>();
         for (Pedido pedido : pedidos) {
-            if (pedido.getCliente().equals(cliente)) {
+            if (pedido.getDNI_cliente().equals(cliente)) {
                 clienteBuscado.add(pedido);
             }
         }
