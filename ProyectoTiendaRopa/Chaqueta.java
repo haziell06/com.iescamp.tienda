@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 public class Chaqueta extends Ropa {
     private boolean impermeable;
 
-    public Chaqueta(int talla, String color, BigDecimal precio, String tipoCierre, String descripcion, String imagen, String s, String estilo, boolean impermeable, String string, String cierre, boolean b) {
+    public Chaqueta(String talla, String color, BigDecimal precio, String tipoCierre, String descripcion, String imagen, String s, String estilo, boolean impermeable, String string, String cierre, boolean b) {
         super(talla, color, tipoCierre);
         this.impermeable = impermeable;
     }
 
-    public Chaqueta(int talla, String color, BigDecimal precio, String tipoCierre, String descripcion, String imagen, boolean impermeable, int i, String cierre, boolean b) {
+    public Chaqueta(String talla, String color, BigDecimal precio, String tipoCierre, String descripcion, String imagen, boolean impermeable, int i, String cierre, boolean b) {
         super(talla, color, tipoCierre);
         this.impermeable = impermeable;
     }
