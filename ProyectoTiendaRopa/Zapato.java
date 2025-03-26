@@ -7,7 +7,7 @@ public class Zapato extends Accesorio {
     private String tipoSuela;
 
     public Zapato(String estilo, Boolean esPersonalizado, int tallaZapato, String tipoSuela) {
-        super(estilo, esPersonalizado);
+        super(estilo, String.valueOf(esPersonalizado));
         this.tallaZapato = tallaZapato;
         this.tipoSuela = tipoSuela;
     }
