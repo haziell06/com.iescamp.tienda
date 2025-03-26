@@ -7,7 +7,7 @@ public class Bolso extends Accesorio {
     private int capacidad;
 
     public Bolso(String estilo, Boolean esPersonalizado, String tipoCierre, int capacidad) {
-        super(estilo, esPersonalizado);
+        super(estilo, String.valueOf(esPersonalizado));
         this.tipoCierre = tipoCierre;
         this.capacidad = capacidad;
     }

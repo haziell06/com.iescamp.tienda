@@ -1,8 +1,9 @@
 package com.iescamp.tienda;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ventas implements Serializable{
+public class Ventas implements Serializable {
     private static final long serialVersionUID = 1L;
     private ArrayList<Pedido> pedidos;
 

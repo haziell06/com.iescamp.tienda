@@ -32,11 +32,11 @@ public class ConsoleUtil {
         String descripcion = readString("Descripción: ");
         String imagen = readString("Imagen: ");
         boolean activo = readBoolean("¿Es activo? ");
-        int talla = readInt("Talla: ");
+        String talla = readString("Talla: ");
         String tipoCierre = readString("Tipo cierre: ");
         boolean impermeable = readBoolean("¿Es impermeable? ");
 
-        return new Chaqueta(cod_art, nombre, precio, marca, descripcion, imagen, activo, talla, tipoCierre, impermeable);
+        return new Chaqueta(talla, nombre, precio, marca, descripcion, imagen, activo, cod_art, tipoCierre, impermeable);
     }
 
     public static Bolso crearBolso(Material material) {

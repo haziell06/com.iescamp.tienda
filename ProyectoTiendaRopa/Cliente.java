@@ -22,6 +22,10 @@ public class Cliente extends Usuario {
         this.pedidos = pedidos;
     }
 
+    public Cliente autenticarCliente(String email, String password){
+
+        return ;
+    }
 
     public String getDir_envio() {
         return dir_envio;
@@ -105,4 +109,5 @@ public class Cliente extends Usuario {
         pedido = pedido.toUpperCase(); // Mantiene la transformación a mayúsculas por si es útil
         System.out.println("Pedido registrado: " + pedido);
     }
+
 }

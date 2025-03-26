@@ -1,6 +1,6 @@
-import java.io.Serializable;
 package com.iescamp.tienda;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Catalogo implements Serializable {
