@@ -5,25 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Clientela implements Serializable {
-   private static final long serialVersionUID = 1L;
-   private ArrayList<Cliente> clientes;
+    private static final long serialVersionUID = 1L;
+    private List<Cliente> clientes;
 
     // constructor
-    public Clientela(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
+    public Clientela(){
+        this.clientes = new ArrayList<>();
     }
 
-    public Clientela() {
-        clientes = new ArrayList<>();
-    }
-    
 
     // getters y setters
     public List<Cliente> getClientes() {
         return clientes;
     }
 
-    public void setClientes(ArrayList<Cliente> clientes) {
+    public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
     }
 
@@ -57,5 +53,14 @@ public class Clientela implements Serializable {
             }
         }
         return resultado;
+    }
+
+    // metodo para añadir cliente
+    public void agregarCliente(Cliente cliente) {
+        if (cliente != null) {
+            clientes.add(cliente);
+        } else {
+            System.out.println("Error");
+        }
     }
 }
