@@ -1,3 +1,4 @@
+import java.io.Serializable;
 package com.iescamp.tienda;
 
 import java.util.ArrayList;
