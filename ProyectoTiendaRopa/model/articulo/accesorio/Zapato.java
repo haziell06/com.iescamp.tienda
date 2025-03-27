@@ -33,6 +33,9 @@ public class Zapato extends Accesorio {
         super();
     }
 
+    public Zapato(int codArt, String nombre, BigDecimal precio, String descripcion, String imagen, boolean activo, String marca, String color, Material material, String estilo, boolean esPersonalizado, TipoAccesorio tipoAccesorio, String tipoSuela, int tallaZapato) {
+    }
+
     public int getTallaZapato() {
         return tallaZapato;
     }
