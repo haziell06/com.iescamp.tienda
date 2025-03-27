@@ -24,6 +24,11 @@ public class Pantalon extends Ropa {
         this.tipoPantalon = tipoPantalon;
     }
 
+    public Pantalon(int codArt, String nombre, BigDecimal precio, String descripcion, String imagen, boolean activo, String marca, String color, Material material, String talla, String tipoCierre, boolean tieneBolsillo, String tipoPantalon) {
+        super(talla, tipoCierre);
+        this.tieneBolsillo = tieneBolsillo;
+        this.tipoPantalon = tipoPantalon;
+    }
 
     public boolean isTieneBolsillo() {
         return tieneBolsillo;
