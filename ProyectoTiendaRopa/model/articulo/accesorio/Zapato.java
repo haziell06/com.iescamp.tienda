@@ -4,17 +4,31 @@ import com.iescamp.tienda.enums.TipoAccesorio;
 import com.iescamp.tienda.model.articulo.Material;
 
 import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Zapato extends Accesorio {
+    @JsonProperty("talla")
     private int tallaZapato;
+
+    @JsonProperty("suela")
     private String tipoSuela;
 
-    public Zapato(String estilo, Boolean esPersonalizado, int tallaZapato, String tipoSuela) {
+    public Zapato() {
+        // Constructor vacío necesario para la deserialización
+    }
+
+    public Zapato(
+            @JsonProperty("estilo") String estilo,
+            @JsonProperty("personalizado") Boolean esPersonalizado,
+            @JsonProperty("talla") int tallaZapato,
+            String tipoSuela
+    ) {
         super(estilo, String.valueOf(esPersonalizado));
         this.tallaZapato = tallaZapato;
         this.tipoSuela = tipoSuela;
     }
-
     public Zapato(int codArt, String nombre, BigDecimal precio, String marca, String descripcion, boolean b, String imagen, String color, Material material, String estilo, boolean activo, boolean personalizado, TipoAccesorio tipoAccesorio, String tipoSuela, int tallaZapato) {
         super();
     }
@@ -45,3 +59,4 @@ public class Zapato extends Accesorio {
         System.out.println(toString());
     }
 }
+
