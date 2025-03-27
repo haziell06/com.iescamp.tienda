@@ -1,15 +1,28 @@
 package com.iescamp.tienda.model.usuario.empleado;
 
-import com.iescamp.tienda.model.usuario.Usuario;
-
 import java.time.LocalDate;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Empleado extends Usuario {
     private boolean tienePrivilegios;
     private String departamento;
 
-    public Empleado(String dni, String nombre, String apellidos, String direccion, String telefono, String e_mail, LocalDate f_nacimiento, String pass, boolean activo, boolean tienePrivilegios, String departamento) {
+    // Constructor sin parámetros para Jackson
+    @JsonCreator
+    public Empleado(
+            @JsonProperty("dni") String dni,
+            @JsonProperty("nombre") String nombre,
+            @JsonProperty("apellidos") String apellidos,
+            @JsonProperty("direccion") String direccion,
+            @JsonProperty("telefono") String telefono,
+            @JsonProperty("e_mail") String e_mail,
+            @JsonProperty("f_nacimiento") LocalDate f_nacimiento,
+            @JsonProperty("pass") String pass,
+            @JsonProperty("activo") boolean activo,
+            @JsonProperty("tienePrivilegios") boolean tienePrivilegios,
+            @JsonProperty("departamento") String departamento) {
         super(dni, nombre, apellidos, direccion, telefono, e_mail, f_nacimiento, pass, activo);
         this.tienePrivilegios = tienePrivilegios;
         this.departamento = departamento;
