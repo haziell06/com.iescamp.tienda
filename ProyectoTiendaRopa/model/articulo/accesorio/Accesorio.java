@@ -2,7 +2,19 @@ package com.iescamp.tienda.model.articulo.accesorio;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.util.Objects;
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.CLASS,  // Usa el nombre de la clase como discriminador
+        include = JsonTypeInfo.As.PROPERTY,  // Incluye el tipo en la propiedad
+        property = "@class"  // Este será el campo en el JSON donde se guardará el tipo
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = AccesorioDeModa.class, name = "AccesorioDeModa"),
+        @JsonSubTypes.Type(value = AccesorioTecnologico.class, name = "AccesorioTecnologico")
+})
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Accesorio {
@@ -60,3 +72,4 @@ public class Accesorio {
                 ", esPersonalizado:'" + esPersonalizado;
     }
 }
+
