@@ -113,6 +113,30 @@ public class FileUtil {
             return List.of();
         }
     }
-}
-    // API Opencsv
+ // API Opencsv
 
+    public static void escribirCSV(String filePath, List<String[]> datos) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter(filePath))) {
+            for (String[] fila : datos) {
+                writer.writeNext(fila);
+            }
+            System.out.println("Datos guardados en: " + filePath);
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo CSV");
+            e.printStackTrace();
+        }
+    }
+    public static List<String[]> leerCSV(String filePath) {
+        try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
+            List<String[]> datos = reader.readAll();
+            System.out.println("Datos leídos desde: " + filePath);
+            return datos;
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo CSV");
+            e.printStackTrace();
+            return List.of();
+        } catch (CsvException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
