@@ -4,8 +4,10 @@ import com.iescamp.tienda.model.articulo.Catalogo;
 import com.iescamp.tienda.model.pedido.Ventas;
 import com.iescamp.tienda.model.usuario.cliente.Clientela;
 import com.iescamp.tienda.model.usuario.empleado.Plantilla;
-
 import java.io.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
+
 
 public class FileUtil {
     // serializar en binario
@@ -86,8 +88,34 @@ public class FileUtil {
         }
     }
 
+
+
+
+
     // API Jackson
 
-    // API Opencsv
+    public static <T> void guardarEnJson(List<T> objetos, String tipo, String filePath) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.writeValue(new File(filePath), objetos);
+            System.out.println(tipo + " guardado en JSON: " + filePath);
+        } catch (IOException e) {
+            System.out.println("Error al escribir el archivo JSON para " + tipo);
+            e.printStackTrace();
+        }
+    }
 
+    public static <T> List<T> leerDesdeJson(String filePath, Class<T[]> clase, String tipo) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            List<T> lista = List.of(objectMapper.readValue(new File(filePath), clase));
+            System.out.println(tipo + " cargado desde JSON: " + filePath);
+            return lista;
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo JSON para " + tipo);
+            e.printStackTrace();
+            return List.of();
+        }
+    }
 }
+    // API Opencsv
