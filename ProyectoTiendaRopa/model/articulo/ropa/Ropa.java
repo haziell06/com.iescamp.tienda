@@ -1,11 +1,19 @@
 package com.iescamp.tienda.model.articulo.ropa;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import com.iescamp.tienda.model.articulo.Articulo;
-
 import java.util.Objects;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "tipoArticulo"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Camisa.class, name = "camisa"),
+        @JsonSubTypes.Type(value = Chaqueta.class, name = "chaqueta"),
+        @JsonSubTypes.Type(value = Pantalon.class, name = "pantalon")
+})
 @JsonIgnoreProperties(ignoreUnknown = true) // Ignora campos desconocidos en JSON
 public class Ropa extends Articulo {
 
