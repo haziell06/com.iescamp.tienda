@@ -136,4 +136,16 @@ public class TiendaConsola {
                 System.out.println("Saliendo...");
         }
     }
+    // CSV reader
+    public class CSVReader {
+        public static void leercsvConsola(){
+            String filePath = ConsoleReader.readString("Introduce la ruta para el archivo CSV: ");
+            List<String[]> datos = FileUtil.leerCSV(filePath);
+
+            for (String[] fila : datos) {
+                System.out.println(String.join(",", fila));
+            }
+        }
+    }
+    
 }
