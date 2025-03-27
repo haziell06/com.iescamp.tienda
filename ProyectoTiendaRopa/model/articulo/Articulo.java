@@ -1,3 +1,5 @@
+package com.iescamp.tienda.model.articulo;
+
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.*;
 
@@ -140,3 +142,4 @@ public class Articulo {
                 '}';
     }
 }
+
