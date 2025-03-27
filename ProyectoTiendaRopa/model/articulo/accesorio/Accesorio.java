@@ -1,19 +1,28 @@
 package com.iescamp.tienda.model.articulo.accesorio;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Accesorio {
 
+    @JsonProperty("estilo")
     private String estilo;
+
+    @JsonProperty("personalizado")
     private String esPersonalizado;
 
-    public Accesorio(String estilo, String esPersonalizado) {
-        this.estilo = estilo;
-        this.esPersonalizado = esPersonalizado;
+    // Constructor vacío para Jackson
+    public Accesorio() {
     }
 
-    public Accesorio() {
-
+    public Accesorio(
+            @JsonProperty("estilo") String estilo,
+            @JsonProperty("personalizado") String esPersonalizado
+    ) {
+        this.estilo = estilo;
+        this.esPersonalizado = esPersonalizado;
     }
 
     public String getEstilo() {
