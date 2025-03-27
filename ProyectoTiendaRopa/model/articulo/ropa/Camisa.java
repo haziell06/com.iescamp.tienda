@@ -34,6 +34,12 @@ public class Camisa extends Ropa {
         super(talla, color, tipoCierre);
     }
 
+    public Camisa(int codArt, String nombre, BigDecimal precio, String descripcion, String imagen, boolean activo, String marca, String color, Material material, String talla, String tipoCierre, String tipoManga, boolean esEstampada) {
+        super(talla, tipoCierre);
+        this.tipoManga = tipoManga;
+        this.esEstampada = esEstampada;
+    }
+
     public String getTipoManga() {
         return tipoManga;
     }
