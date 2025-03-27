@@ -1,7 +1,9 @@
 package com.iescamp.tienda.model.articulo;
 
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Articulo {
     private int codigoArticulo;
     private String nombre;
@@ -13,7 +15,18 @@ public class Articulo {
     private String color;
     private Material material;
 
-    public Articulo(int codigoArticulo, String nombre, float precio, String descripcion, String imagen, boolean activo, String marca, String color, Material material) {
+    // Constructor sin parámetros para Jackson
+    @JsonCreator
+    public Articulo(
+            @JsonProperty("codigoArticulo") int codigoArticulo,
+            @JsonProperty("nombre") String nombre,
+            @JsonProperty("precio") float precio,
+            @JsonProperty("descripcion") String descripcion,
+            @JsonProperty("imagen") String imagen,
+            @JsonProperty("activo") boolean activo,
+            @JsonProperty("marca") String marca,
+            @JsonProperty("color") String color,
+            @JsonProperty("material") Material material) {
         this.codigoArticulo = codigoArticulo;
         this.nombre = nombre;
         this.precio = precio;
