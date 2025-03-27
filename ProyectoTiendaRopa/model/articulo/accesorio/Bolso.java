@@ -28,6 +28,9 @@ public class Bolso extends Accesorio {
     }
     public Bolso(int codArt, String nombre, BigDecimal precio, String marca, String descripcion, String imagen, boolean activo, String estilo, boolean personalizado, String tipoCierre, int capacidad) {
     }
+    
+    public Bolso(int codArt, String nombre, BigDecimal precio, String descripcion, String imagen, boolean activo, String marca, String color, Material material, String estilo, boolean esPersonalizado, TipoAccesorio tipoAccesorio, String tipoCierre, int capacidad) {
+    }
 
     public String getTipoCierre() {
         return tipoCierre;
