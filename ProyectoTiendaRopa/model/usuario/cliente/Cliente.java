@@ -1,13 +1,9 @@
-package com.iescamp.tienda.model.usuario.cliente;
-
-import com.iescamp.tienda.model.MetodoPago;
-import com.iescamp.tienda.model.pedido.Pedido;
-import com.iescamp.tienda.model.usuario.Usuario;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Cliente extends Usuario {
     private String dir_envio;
     private float saldo_cuenta;
@@ -16,7 +12,25 @@ public class Cliente extends Usuario {
     private MetodoPago metodoPago;
     private ArrayList<Pedido> pedidos;
 
-    public Cliente(String dni, String nombre, String apellidos, String direccion, String telefono, String e_mail, LocalDate f_nacimiento, String pass, boolean activo, String dir_envio, float saldo_cuenta, boolean tarjeta_fidelizacion, int numeroPedidos, MetodoPago metodoPago, ArrayList<Pedido> pedidos) {
+    // Constructor sin parámetros para Jackson
+
+    @JsonCreator
+    public Cliente(
+            @JsonProperty("dni") String dni,
+            @JsonProperty("nombre") String nombre,
+            @JsonProperty("apellidos") String apellidos,
+            @JsonProperty("direccion") String direccion,
+            @JsonProperty("telefono") String telefono,
+            @JsonProperty("e_mail") String e_mail,
+            @JsonProperty("f_nacimiento") LocalDate f_nacimiento,
+            @JsonProperty("pass") String pass,
+            @JsonProperty("activo") boolean activo,
+            @JsonProperty("dir_envio") String dir_envio,
+            @JsonProperty("saldo_cuenta") float saldo_cuenta,
+            @JsonProperty("tarjeta_fidelizacion") boolean tarjeta_fidelizacion,
+            @JsonProperty("numeroPedidos") int numeroPedidos,
+            @JsonProperty("metodoPago") MetodoPago metodoPago,
+            @JsonProperty("pedidos") ArrayList<Pedido> pedidos) {
         super(dni, nombre, apellidos, direccion, telefono, e_mail, f_nacimiento, pass, activo);
         this.dir_envio = dir_envio;
         this.saldo_cuenta = saldo_cuenta;
@@ -25,6 +39,7 @@ public class Cliente extends Usuario {
         this.metodoPago = metodoPago;
         this.pedidos = pedidos;
     }
+
 
     public String getDir_envio() {
         return dir_envio;
