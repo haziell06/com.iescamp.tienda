@@ -1,22 +1,33 @@
 package com.iescamp.tienda.model.articulo.ropa;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.iescamp.tienda.model.articulo.Articulo;
 
 import java.util.Objects;
 
+@JsonIgnoreProperties(ignoreUnknown = true) // Ignora campos desconocidos en JSON
 public class Ropa extends Articulo {
 
     private String talla;
     private String color;
     private String tipoCierre;
 
+    // Constructor vacío para Jackson
+    public Ropa() {
+        super();
+    }
 
-    public Ropa(String talla, String color, String tipoCierre) {
+    public Ropa(
+            @JsonProperty("talla") String talla,
+            @JsonProperty("color") String color,
+            @JsonProperty("tipoCierre") String tipoCierre) {
         super();
         this.talla = talla;
         this.color = color;
         this.tipoCierre = tipoCierre;
     }
+
 
     public String getTalla() {
         return talla;
