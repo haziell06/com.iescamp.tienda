@@ -12,8 +12,7 @@ import java.util.Objects;
         property = "@class"  // Este será el campo en el JSON donde se guardará el tipo
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = AccesorioDeModa.class, name = "AccesorioDeModa"),
-        @JsonSubTypes.Type(value = AccesorioTecnologico.class, name = "AccesorioTecnologico")
+        @JsonSubTypes.Type(value = Accesorio.class, name = "Accesorio"),
 })
 
 @JsonIgnoreProperties(ignoreUnknown = true)
