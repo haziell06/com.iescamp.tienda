@@ -3,6 +3,7 @@ package com.iescamp.tienda.model.usuario.empleado;
 import java.time.LocalDate;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.*;
+import com.iescamp.tienda.model.usuario.Usuario;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Empleado extends Usuario {
