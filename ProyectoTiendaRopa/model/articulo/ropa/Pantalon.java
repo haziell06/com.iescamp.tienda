@@ -1,27 +1,27 @@
 package com.iescamp.tienda.model.articulo.ropa;
 
-import com.iescamp.tienda.model.articulo.Material;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.math.BigDecimal;
-
+@JsonIgnoreProperties(ignoreUnknown = true) // Ignora campos desconocidos en JSON
 public class Pantalon extends Ropa {
     private boolean tieneBolsillo;
     private String tipoPantalon;
 
-    public Pantalon(String talla, String color, String tipoCierre, boolean tieneBolsillo, String tipoPantalon) {
-        super(talla, tipoCierre);
+
+    public Pantalon(
+            @JsonProperty("talla") String talla,
+            @JsonProperty("color") String color,
+            @JsonProperty("tipoCierre") String tipoCierre,
+            @JsonProperty("tieneBolsillo") boolean tieneBolsillo,
+            @JsonProperty("tipoPantalon") String tipoPantalon) {
+        super(talla, color, tipoCierre);
         this.tieneBolsillo = tieneBolsillo;
         this.tipoPantalon = tipoPantalon;
     }
 
     public Pantalon(int codArt, String nombre, BigDecimal precio, String descripcion, String imagen, boolean activo, String marca, String talla, String color, String tipoCierre, String tipoPantalon, boolean tieneBolsillos) {
-        super(talla, tipoCierre);
-    }
-
-    public Pantalon(int codArt, String nombre, BigDecimal precio, String descripcion, String imagen, boolean activo, String marca, String color, Material material, String talla, String tipoCierre, boolean tieneBolsillo, String tipoPantalon) {
-        super(talla, tipoCierre);
-        this.tieneBolsillo = tieneBolsillo;
-        this.tipoPantalon = tipoPantalon;
+        super(talla, color, tipoCierre);
     }
 
     public boolean isTieneBolsillo() {
