@@ -92,4 +92,23 @@ public class EmpleadoDAO implements GenericDAO<Empleado, String> {
                 );
 
     }
+
+      // unique
+    public Empleado obtenerPorEmail(String email) throws SQLException {
+        String sql = "SELECT * FROM EMPLEADO where email = ?";
+        Empleado empleado = null;
+
+        try (Connection connection = DBUtil.getConnection();
+             PreparedStatement stm = connection.prepareStatement(sql)) {
+
+            stm.setString(1, email);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                empleado = construirDesdeResultSet(rs);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return empleado;
+    }
 }
