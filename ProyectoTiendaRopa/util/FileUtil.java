@@ -5,9 +5,13 @@ import com.iescamp.tienda.model.pedido.Ventas;
 import com.iescamp.tienda.model.usuario.cliente.Clientela;
 import com.iescamp.tienda.model.usuario.empleado.Plantilla;
 import java.io.*;
-import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvException;
+
 import java.util.List;
+
 
 public class FileUtil {
     // serializar en binario
@@ -113,8 +117,7 @@ public class FileUtil {
             return List.of();
         }
     }
- // API Opencsv
-
+    // OpenCSV
     public static void escribirCSV(String filePath, List<String[]> datos) {
         try (CSVWriter writer = new CSVWriter(new FileWriter(filePath))) {
             for (String[] fila : datos) {

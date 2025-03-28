@@ -1,7 +1,5 @@
 package com.iescamp.tienda.model.usuario.empleado;
 
-import com.iescamp.tienda.model.usuario.Usuario;
-
 import java.time.LocalDate;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.*;
@@ -10,7 +8,7 @@ import com.fasterxml.jackson.annotation.*;
 public class Empleado extends Usuario {
     private boolean tienePrivilegios;
     private String departamento;
-    
+
     // Constructor sin parámetros para Jackson
     @JsonCreator
     public Empleado(

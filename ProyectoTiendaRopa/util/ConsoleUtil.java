@@ -28,7 +28,7 @@ public class ConsoleUtil {
         String tipoSuela = readString("Tipo de suela: ");
         int tallaZapato = readInt("Talla del zapato: ");
 
-        return new Zapato(cod_art, nombre, precio, marca, descripcion, true, imagen, color, material, estilo, activo, personalizado, TipoAccesorio.ZAPATOS, tipoSuela, tallaZapato);
+        return new Zapato(cod_art, nombre, precio, marca, descripcion, imagen, color, material, estilo, activo, personalizado, TipoAccesorio.ZAPATOS, tipoSuela, tallaZapato);
     }
 
     public static Chaqueta crearChaqueta(Material material){
@@ -79,7 +79,7 @@ public class ConsoleUtil {
         String tipoManga = readString("Tipo Manga:  ");
         boolean esEstampada = readBoolean("¿Tiene Estampado? ");
 
-        return new Camisa(cod_art, nombre, precio, descripcion, imagen, activo, marca, talla, color, tipoCierre, tipoManga, esEstampada);
+        return new Camisa(cod_art, nombre, precio, marca, descripcion, imagen, activo, talla, color, tipoCierre, tipoManga, esEstampada);
     }
     public static Pantalon crearPantalon(Material material) {
         System.out.println("Creando un Pantalon...");

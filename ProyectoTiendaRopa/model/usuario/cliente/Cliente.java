@@ -4,7 +4,6 @@ import com.iescamp.tienda.model.MetodoPago;
 import com.iescamp.tienda.model.pedido.Pedido;
 import com.iescamp.tienda.model.usuario.Usuario;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -18,8 +17,9 @@ public class Cliente extends Usuario {
     private int numeroPedidos;
     private MetodoPago metodoPago;
     private ArrayList<Pedido> pedidos;
-    
+
     // Constructor sin parámetros para Jackson
+
     @JsonCreator
     public Cliente(
             @JsonProperty("dni") String dni,
@@ -131,3 +131,4 @@ public class Cliente extends Usuario {
     }
 
 }
+

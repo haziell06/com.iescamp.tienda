@@ -9,9 +9,11 @@ import com.iescamp.tienda.model.usuario.cliente.Clientela;
 import com.iescamp.tienda.model.usuario.empleado.Empleado;
 import com.iescamp.tienda.model.usuario.empleado.Plantilla;
 import com.iescamp.tienda.util.ConsoleUtil;
+import com.iescamp.tienda.util.FileUtil;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TiendaConsola {
     public static void main(String[] args) {
@@ -147,5 +149,4 @@ public class TiendaConsola {
             }
         }
     }
-    
 }
