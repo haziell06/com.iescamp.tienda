@@ -64,4 +64,24 @@ public class MaterialDAO implements GenericDAO <Material, Integer>{
                 rs.getString("descripcion")
         );
     }
+    
+ //unique
+    public Material obtenerPorDenominacion(String denominacion) {
+        String sql = "SELECT * FROM MATERIAL WHERE denominacion = ?";
+        Material material = null;
+
+        try (Connection connection = DBUtil.getConnection();
+             PreparedStatement stm = connection.prepareStatement(sql)) {
+             stm.setString(1,denominacion);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()){
+                material = construirDesdeResultSet(rs);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return material;
+    }
+
+
 }
