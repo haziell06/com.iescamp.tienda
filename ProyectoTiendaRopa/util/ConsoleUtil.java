@@ -44,7 +44,7 @@ public class ConsoleUtil {
         String tipoCierre = readString("Tipo cierre: ");
         boolean impermeable = readBoolean("¿Es impermeable? ");
 
-        return new Chaqueta(talla, nombre, precio, marca, descripcion, imagen, activo, cod_art, tipoCierre, impermeable);
+        return new Chaqueta(cod_art, nombre, precio, marca, descripcion, imagen, activo, talla, tipoCierre, impermeable);
     }
 
     public static Bolso crearBolso(Material material) {
