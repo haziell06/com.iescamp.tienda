@@ -18,16 +18,6 @@ public class Cliente extends Usuario {
     private int numeroPedidos;
     private MetodoPago metodoPago;
     private ArrayList<Pedido> pedidos;
-
-public Cliente(String dni, String nombre, String apellidos, String direccion, String telefono, String e_mail, LocalDate f_nacimiento, String pass, boolean activo, String dir_envio, float saldo_cuenta, boolean tarjeta_fidelizacion, int numeroPedidos, MetodoPago metodoPago, ArrayList<Pedido> pedidos) {
-        super(dni, nombre, apellidos, direccion, telefono, e_mail, f_nacimiento, pass, activo);
-        this.dir_envio = dir_envio;
-        this.saldo_cuenta = saldo_cuenta;
-        this.tarjeta_fidelizacion = tarjeta_fidelizacion;
-        this.numeroPedidos = numeroPedidos;
-        this.metodoPago = metodoPago;
-        this.pedidos = pedidos;
-    }
     
     // Constructor sin parámetros para Jackson
     @JsonCreator
