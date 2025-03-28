@@ -90,4 +90,23 @@ public class ClienteDAO implements GenericDAO <Cliente, String> {
         );
     }
 
+    // unique
+    public Cliente obtenerPorEmail(String email) {
+        Cliente cliente = null;
+        String sql = "SELECT * FROM CLIENTE WHERE email = ?";
+
+        try (Connection connection = DBUtil.getConnection();
+             PreparedStatement stm = connection.prepareStatement(sql)) {
+
+            stm.setString(1, email);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                cliente = construirDesdeResultSet(rs);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cliente;
+    }
+
 }
