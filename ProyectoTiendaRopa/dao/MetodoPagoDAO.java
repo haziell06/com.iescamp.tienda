@@ -63,4 +63,25 @@ public class MetodoPagoDAO implements GenericDAO <MetodoPago, Integer> {
                 rs.getString("descripcion")
         );
     }
+
+ // unique
+
+
+    public MetodoPago obtenerPorDescripcion(String descripcion) throws SQLException{
+        String sql = "SELECT * FROM MetodoPago where metodoPago = ?";
+        MetodoPago metodoPago = null;
+        try (Connection conn = DBUtil.getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql)) {
+            stm.setString(1, descripcion);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+            metodoPago = construirDesdeResultSet(rs);
+            }
+        }catch (SQLException e){
+            throw new SQLException(e);
+        }
+
+        return metodoPago;
+    }
+    
 }
