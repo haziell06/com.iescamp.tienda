@@ -1,26 +1,7 @@
 package com.iescamp.tienda.model.articulo;
 
-import com.fasterxml.jackson.annotation.*;
-import com.iescamp.tienda.model.articulo.ropa.Ropa;
-import com.iescamp.tienda.model.articulo.accesorio.Accesorio;
-import com.iescamp.tienda.model.articulo.ropa.Camisa;
-import com.iescamp.tienda.model.articulo.ropa.Chaqueta;
-import com.iescamp.tienda.model.articulo.ropa.Pantalon;
-
 import java.util.Objects;
-
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,  // Usa un nombre identificador en JSON
-        include = JsonTypeInfo.As.PROPERTY,  // Guarda el tipo en una propiedad específica
-        property = "tipoArticulo"  // Nombre de la propiedad donde se almacena el tipo
-)
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Ropa.class, name = "ropa"),
-        @JsonSubTypes.Type(value = Accesorio.class, name = "accesorio"),
-        @JsonSubTypes.Type(value = Camisa.class, name = "camisa"),
-        @JsonSubTypes.Type(value = Chaqueta.class, name = "chaqueta"),
-        @JsonSubTypes.Type(value = Pantalon.class, name = "pantalon")
-})
+import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Articulo {
