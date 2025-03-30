@@ -93,7 +93,32 @@ public class EmpleadoDAO implements GenericDAO<Empleado, String> {
 
     }
 
-      // unique
+    public Empleado autenticarEmpleado(String email, String password) {
+        Empleado empleado = null;
+        String sql = "SELECT * FROM EMPLEADO WHERE e_mail = ?";  // Consulta de email
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) { // Si el email existe comprobamos la contraseña
+                String storedPassword = rs.getString("pass");
+
+                if (storedPassword.equals(password)) { // Si la contraseña coincide creamos el objeto Empleado
+                    empleado = construirDesdeResultSet(rs);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return empleado;  // Si la contraseña no es correcta, return null
+    }
+
+
+    // unique
     public Empleado obtenerPorEmail(String email) throws SQLException {
         String sql = "SELECT * FROM EMPLEADO where email = ?";
         Empleado empleado = null;
