@@ -22,6 +22,8 @@ public class TiendaConsola {
         Plantilla plantilla = new Plantilla(listaEmpleados);
 
         //comentario de prueba
+
+
         while (!salir) {
             System.out.println("Menú Principal");
             System.out.println("1- Plantillas");
