@@ -21,7 +21,7 @@ public class TiendaConsola {
         ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         Plantilla plantilla = new Plantilla(listaEmpleados);
 
-
+        //comentario de prueba
         while (!salir) {
             System.out.println("Menú Principal");
             System.out.println("1- Plantillas");
@@ -100,6 +100,7 @@ public class TiendaConsola {
             MetodoPago metodoPago = new MetodoPago(ConsoleReader.readInt("Ingrese el código del método de pago: "),ConsoleReader.readString("Ingrese la descripción del metodo de pago: "));
             ArrayList<Pedido> pedidos = new ArrayList<>();
 
+        //Otra prueba
 
             Cliente cliente = new Cliente(dni, nombre, direccion, apellidos, telefono, email, fechaNacimiento, password, activo, dir_envio, saldo_cuenta, tarjeta_fidelizacion, numeroPedidos, metodoPago, pedidos);
             // añadir cliente a clientela
