@@ -21,8 +21,6 @@ public class TiendaConsola {
         ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         Plantilla plantilla = new Plantilla(listaEmpleados);
 
-        //comentario de prueba
-
 
         while (!salir) {
             System.out.println("Menú Principal");
