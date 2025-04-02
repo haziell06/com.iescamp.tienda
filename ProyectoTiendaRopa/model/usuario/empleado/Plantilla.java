@@ -7,6 +7,7 @@ import java.util.Objects;
 public class Plantilla implements Serializable {
     private static final long serialVersionUID = 1L;
     private ArrayList<Empleado> plantillas;
+
     public Plantilla() {
         plantillas = new ArrayList<>();
     }
@@ -46,6 +47,7 @@ public class Plantilla implements Serializable {
         }
         return DepBuscado;
     }
+
     public ArrayList<Empleado> filtarAdmin() {
         ArrayList<Empleado> Administradores = new ArrayList<>();
         for (Empleado empleado : plantillas) {
@@ -55,6 +57,7 @@ public class Plantilla implements Serializable {
         }
         return Administradores;
     }
+
     public ArrayList<Empleado> filtarNom(String Nom, String Apellidos) {
         ArrayList<Empleado> NomBuscado = new ArrayList<>();
         for (Empleado empleado : plantillas) {
@@ -72,5 +75,13 @@ public class Plantilla implements Serializable {
         } else {
             System.out.println("Error");
         }
+    }
+
+    public Empleado buscarEmpleadoPorDNI(String dni) {
+        return null;
+    }
+
+    public Empleado[] getListaEmpleados() {
+        return null;
     }
 }
