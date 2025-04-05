@@ -65,4 +65,12 @@ public class Clientela implements Serializable {
             System.out.println("Error");
         }
     }
+
+    public Cliente[] getListaClientes() {
+        return null;
+    }
+
+    public Cliente buscarClientePorDNI(String dni) {
+        return null;
+    }
 }

@@ -81,4 +81,9 @@ public class Empleado extends Usuario {
     public int hashCode() {
         return Objects.hash(super.hashCode(), tienePrivilegios, departamento);
     }
+
+    public Object getPassword() {
+        return null;
+    }
 }
+

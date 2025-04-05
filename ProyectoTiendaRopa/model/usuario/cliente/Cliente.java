@@ -130,5 +130,8 @@ public class Cliente extends Usuario {
         System.out.println("Pedido registrado: " + pedido);
     }
 
+    public Object getPassword() {
+        return null;
+    }
 }
 
