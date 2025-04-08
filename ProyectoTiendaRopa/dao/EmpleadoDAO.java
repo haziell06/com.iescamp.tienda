@@ -19,7 +19,7 @@ public class EmpleadoDAO implements GenericDAO<Empleado, String> {
         String sql = "SELECT * FROM CLIENTE WHERE DNI = ?";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, Integer.parseInt(DNI));
+            stmt.setString(1, DNI);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return construirDesdeResultSet(rs);
@@ -35,21 +35,6 @@ public class EmpleadoDAO implements GenericDAO<Empleado, String> {
     public List<Empleado> obtenerTodos() {
         List<Empleado> empleados = new ArrayList<>();
         String sql = "SELECT * FROM EMPLEADO";
-        try (Connection conn = DBUtil.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                empleados.add(construirDesdeResultSet(rs));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return empleados;
-    }
-
-    public List<Empleado> obtenerEmpleadoPorDepartamento() {
-        List<Empleado> empleados = new ArrayList<>();
-        String sql = "SELECT * FROM EMPLEADO where DEPARTAMENTO.codigo = ?";
         try (Connection conn = DBUtil.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {

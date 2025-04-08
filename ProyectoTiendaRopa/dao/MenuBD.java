@@ -47,6 +47,7 @@ public class MenuBD {
 
             switch (opcion) {
                 case 1:
+                    ClientelaBD.ListarClientePorDNI(ConsoleReader.readString("Escriba el DNI del cliente: "));
                     break;
                 case 2:
                     break;
@@ -61,6 +62,7 @@ public class MenuBD {
                 case 6:
                     break;
                 case 7:
+                    ClientelaBD.ListarPorPedido(ConsoleReader.readString("Escriba el DNI del cliente: "));
                     break;
                 case 8:
                 System.out.println("Volviendo...");
@@ -85,6 +87,7 @@ public class MenuBD {
 
             switch (opcion) {
                 case 1:
+                    PlantillaBD.ListarEmpleadoPorDNI(ConsoleReader.readString("Escriba el DNI del empleado: "));
                     break;
                 case 2:
                 PlantillaBD.cargarEmpleados();
@@ -121,6 +124,7 @@ public class MenuBD {
 
             switch (opcion) {
                 case 1:
+                    CatalogoBD.ListarArticuloPorID(ConsoleReader.readInt("Escriba el codigo del articulo: "));
                     break;
                 case 2:
                     break;
@@ -128,6 +132,9 @@ public class MenuBD {
                 CatalogoBD.cargarArticulos();
                     break;
                 case 4:
+                    // La consulta de mysql solo funciona si uno de los dos tipos sea null si lo que quieres es devolver solo un tipo especifico de articulo
+                    // probablemente se podria mejorar para que eso no sea necesario pero no se como
+                    CatalogoBD.ListarTodosPorTipo(ConsoleReader.readString("Escribe el tipo de ropa que buscas: "), ConsoleReader.readString("Escribe el tipo de accesorio que buscas: "));
                     break;
                 case 5:
                     break;
