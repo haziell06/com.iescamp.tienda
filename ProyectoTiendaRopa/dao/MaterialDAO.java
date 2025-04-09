@@ -48,8 +48,9 @@ public class MaterialDAO implements GenericDAO <Material, Integer>{
     }
 
     @Override
-    public void actualizar(Material obj) {
+    public boolean actualizar(Material obj) {
 
+        return false;
     }
 
     @Override
@@ -64,15 +65,15 @@ public class MaterialDAO implements GenericDAO <Material, Integer>{
                 rs.getString("descripcion")
         );
     }
-    
- //unique
+
+    //unique
     public Material obtenerPorDenominacion(String denominacion) {
         String sql = "SELECT * FROM MATERIAL WHERE denominacion = ?";
         Material material = null;
 
         try (Connection connection = DBUtil.getConnection();
              PreparedStatement stm = connection.prepareStatement(sql)) {
-             stm.setString(1,denominacion);
+            stm.setString(1,denominacion);
             ResultSet rs = stm.executeQuery();
             if (rs.next()){
                 material = construirDesdeResultSet(rs);

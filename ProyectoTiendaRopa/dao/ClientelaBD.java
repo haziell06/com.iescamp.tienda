@@ -97,4 +97,9 @@ public class ClientelaBD {
     }
 
 
+    public static void ListarPorPedido(String s) {
+    }
+
+    public static void ListarClientePorDNI(String cliente) {
+    }
 }
