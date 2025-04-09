@@ -15,12 +15,13 @@ public class ClienteDAO implements GenericDAO <Cliente, String> {
     public void insertar(Cliente obj) {
         // metodo void, se hará más adelante
     }
+
     @Override
     public Cliente obtenerPorId(String DNI) {
         String sql = "SELECT * FROM CLIENTE WHERE DNI = ?";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, DNI);
+            stmt.setInt(1, Integer.parseInt(DNI));
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return construirDesdeResultSet(rs);
@@ -31,6 +32,7 @@ public class ClienteDAO implements GenericDAO <Cliente, String> {
         }
         return null;
     }
+
     @Override
     public List<Cliente> obtenerTodos() {
         List<Cliente> clientes = new ArrayList<>();
@@ -48,8 +50,9 @@ public class ClienteDAO implements GenericDAO <Cliente, String> {
     }
 
     @Override
-    public void actualizar(Cliente obj) {
+    public boolean actualizar(Cliente obj) {
         // metodo void, se hará más adelante
+        return false;
     }
 
     @Override
@@ -87,6 +90,7 @@ public class ClienteDAO implements GenericDAO <Cliente, String> {
                 pedidos
         );
     }
+
     public Cliente autenticarCliente(String email, String password) {
         Cliente cliente = null;
         String sql = "SELECT * FROM clientes WHERE e_mail = ? AND pass = ?";
@@ -128,4 +132,29 @@ public class ClienteDAO implements GenericDAO <Cliente, String> {
         }
         return cliente;
     }
+
+    public Cliente obtenerPorDNI(String dni) {
+        Cliente cliente = null;
+        String sql = "SELECT * FROM CLIENTE WHERE DNI = ?";
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, dni); // Usar el DNI como parámetro en la consulta
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                cliente = construirDesdeResultSet(rs); // Crear el cliente desde el ResultSet
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cliente; // Retorna el cliente encontrado o null si no se encuentra
+    }
+
+
+
+
+
+
 }

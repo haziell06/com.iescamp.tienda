@@ -69,8 +69,9 @@ public class PedidoDAO implements GenericDAO <Pedido, Integer> {
     }
 
     @Override
-    public void actualizar(Pedido obj) {
+    public boolean actualizar(Pedido obj) {
         // metodo void, se hará más adelante
+        return false;
     }
 
     @Override

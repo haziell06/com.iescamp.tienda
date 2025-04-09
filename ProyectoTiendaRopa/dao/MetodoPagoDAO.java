@@ -47,8 +47,9 @@ public class MetodoPagoDAO implements GenericDAO <MetodoPago, Integer> {
     }
 
     @Override
-    public void actualizar(MetodoPago obj) {
+    public boolean actualizar(MetodoPago obj) {
 
+        return false;
     }
 
     @Override
@@ -64,18 +65,18 @@ public class MetodoPagoDAO implements GenericDAO <MetodoPago, Integer> {
         );
     }
 
- // unique
+    // unique
 
 
     public MetodoPago obtenerPorDescripcion(String descripcion) throws SQLException{
         String sql = "SELECT * FROM MetodoPago where metodoPago = ?";
         MetodoPago metodoPago = null;
         try (Connection conn = DBUtil.getConnection();
-        PreparedStatement stm = conn.prepareStatement(sql)) {
+             PreparedStatement stm = conn.prepareStatement(sql)) {
             stm.setString(1, descripcion);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-            metodoPago = construirDesdeResultSet(rs);
+                metodoPago = construirDesdeResultSet(rs);
             }
         }catch (SQLException e){
             throw new SQLException(e);
@@ -83,5 +84,5 @@ public class MetodoPagoDAO implements GenericDAO <MetodoPago, Integer> {
 
         return metodoPago;
     }
-    
+
 }

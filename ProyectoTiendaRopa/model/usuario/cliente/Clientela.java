@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Clientela implements Serializable {
     private static final long serialVersionUID = 1L;
+    private static Clientela instancia;
     private List<Cliente> clientes;
 
     // constructor

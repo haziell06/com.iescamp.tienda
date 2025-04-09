@@ -1,8 +1,10 @@
 package com.iescamp.tienda.dao;
 //christian
+import com.iescamp.tienda.ConsoleReader;
 import com.iescamp.tienda.enums.TipoAccesorio;
 import com.iescamp.tienda.enums.TipoRopa;
 import com.iescamp.tienda.model.articulo.Articulo;
+import com.iescamp.tienda.model.articulo.Catalogo;
 import com.iescamp.tienda.model.articulo.accesorio.Bolso;
 import com.iescamp.tienda.model.articulo.accesorio.Zapato;
 import com.iescamp.tienda.model.articulo.Material;
@@ -59,8 +61,9 @@ public class ArticuloDAO implements GenericDAO <Articulo, Integer> {
     }
 
     @Override
-    public void actualizar(Articulo obj) {
+    public boolean actualizar(Articulo obj) {
         // metodo void, se hará más adelante
+        return false;
     }
 
     @Override
@@ -196,4 +199,77 @@ public class ArticuloDAO implements GenericDAO <Articulo, Integer> {
         }
         return null;
     }
+
+    public static void modificarArticulo(Articulo art) {
+        ArticuloDAO dao = new ArticuloDAO();
+        System.out.println("Modificando articulo");
+        System.out.println("introduzca el codigo del articulo");
+        int cod_art = 0;
+        Articulo articuloExistente = null;
+
+        String CodArt = ConsoleReader.readString();
+        articuloExistente = dao.obtenerPorId(cod_art);
+        if (articuloExistente != null) {
+            System.out.println("Artículo encontrado. Procediendo a modificar.");
+
+            // Modificar el nombre del artículo (si se proporciona uno nuevo)
+            String nuevoNombre = ConsoleReader.readString("Nuevo nombre del artículo (deja vacío para no modificar): ");
+            if (!nuevoNombre.isEmpty()) {
+                articuloExistente.setNombre(nuevoNombre);
+            }
+            // Modificar el precio del artículo (si se proporciona uno nuevo)
+            float nuevoPrecio = ConsoleReader.readFloat("Nuevo precio del artículo (deja 0 para no modificar): ");
+            if (nuevoPrecio > 0) {
+                articuloExistente.setPrecio(nuevoPrecio);
+            }
+            // Modificar la descripción del artículo (si se proporciona una nueva)
+            String nuevaDescripcion = ConsoleReader.readString("Nueva descripción del artículo (deja vacío para no modificar): ");
+            if (!nuevaDescripcion.isEmpty()) {
+                articuloExistente.setDescripcion(nuevaDescripcion);
+            }
+            // Actualizar el artículo en la base de datos
+            boolean actualizado = dao.actualizar(articuloExistente);
+            // Verificar si la actualización fue exitosa
+            if (actualizado) {
+                System.out.println("Artículo modificado con éxito.");
+
+                // Recargar el catálogo de artículos desde la BD
+                List<Articulo> articulosRecargados = dao.obtenerTodos();
+                System.out.println("Catálogo de artículos recargado. Total de artículos: " + articulosRecargados.size());
+
+                // Actualizar el catálogo en la clase correspondiente (por ejemplo, en la clase Catalogo)
+                Catalogo catalogo = new Catalogo();
+                catalogo.setCatalogo((ArrayList<Articulo>) articulosRecargados);
+            } else {
+                System.out.println("Hubo un error al actualizar el artículo.");
+            }
+        } else {
+            System.out.println("No se encontró un artículo con el código proporcionado.");
+        }
+
+    }
+
+    //eliminar y recargar
+    public void eliminarArticuloYRecargar(String codArtic) {
+        String sql = "DELETE FROM ARTICULO WHERE cod_artic = ?";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, codArtic);
+            int filas = stmt.executeUpdate();
+
+            if (filas > 0) {
+                System.out.println("Artículo eliminado correctamente.");
+                List<Articulo> articulos = obtenerTodos();
+                System.out.println("Catálogo recargado. Total artículos: " + articulos.size());
+            } else {
+                System.out.println("No se encontró el artículo.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

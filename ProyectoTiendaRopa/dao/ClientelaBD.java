@@ -2,31 +2,11 @@ package com.iescamp.tienda.dao;
 
 import com.iescamp.tienda.ConsoleReader;
 import com.iescamp.tienda.model.usuario.cliente.Cliente;
+import com.iescamp.tienda.model.usuario.cliente.Clientela;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public class ClientelaBD {
-    public static Cliente ListarClientePorDNI(String DNI) {
-        String sql = "SELECT * FROM CLIENTE WHERE DNI = ?";
-        try (Connection conn = DBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, DNI);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    ClienteDAO dao = new ClienteDAO();
-                    Cliente cliente = dao.construirDesdeResultSet(rs);
-                    return cliente;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
     public static void cargarClientes(){
         ClienteDAO dao = new ClienteDAO();
         List<Cliente> clientes = dao.obtenerTodos();
@@ -48,23 +28,73 @@ public class ClientelaBD {
             System.out.println("Email o contraseña incorrectos.");
         }
     }
-    public static Cliente ListarPorPedido(String DNI) {
-        String sql = "select p.* \n" +
-                "from pedido p join cliente c\n" +
-                "on  p.DNI_cliente = c.DNI\n" +
-                "where c.DNI = ?;";
-        try (Connection conn = DBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, DNI);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    ClienteDAO dao = new ClienteDAO();
-                    Cliente cliente = dao.construirDesdeResultSet(rs);
-                    return cliente;                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+    // modificar usuario
+    // mediante dni y correo
+    public static void modificarCliente(Cliente cliente) {
+        ClienteDAO dao = new ClienteDAO();
+        Clientela Clientela = new Clientela();// puede estar mal
+
+        System.out.println("""
+            Como deseas buscar el cliente:
+            1-Por DNI
+            2-Por Correo                    
+            """);
+
+        int opcion = ConsoleReader.readInt("Ingrese la opción: ");
+        Cliente clienteExistente = null;
+
+        switch (opcion) {
+            case 1:
+                // Buscar por DNI
+                String dni = ConsoleReader.readString("Introduce el DNI del cliente: ");
+                clienteExistente = dao.obtenerPorDNI(dni);
+                break;
+            case 2:
+                // Buscar por correo electrónico
+                String email = ConsoleReader.readString("Introduce el correo del cliente: ");
+                clienteExistente = dao.obtenerPorEmail(email);
+                break;
+            default:
+                System.out.println("Opción no válida.");
+                return;
         }
-        return null;
+
+        if (clienteExistente != null) {
+            // Modificación solo de DNI o correo
+            System.out.println("Cliente encontrado. Procediendo a modificar.");
+
+            switch (opcion) {
+                case 1:
+                    // Modificar DNI
+                    String nuevoDNI = ConsoleReader.readString("Nuevo DNI (deja vacío para no modificar): ");
+                    if (!nuevoDNI.isEmpty()) {
+                        clienteExistente.setDni(nuevoDNI);
+                    }
+                    break;
+                case 2:
+                    // Modificar correo
+                    String nuevoCorreo = ConsoleReader.readString("Nuevo correo (deja vacío para no modificar): ");
+                    if (!nuevoCorreo.isEmpty()) {
+                        clienteExistente.setE_mail(nuevoCorreo);
+                    }
+                    break;
+            }
+
+            // Actualizar en la base de datos
+            dao.actualizar(clienteExistente);
+            System.out.println("Cliente modificado con éxito.");
+
+            // Recargar la lista de clientes desde la BD
+            List<Cliente> clientesActualizados = dao.obtenerTodos();
+            System.out.println("Clientes recargados desde la BD: " + clientesActualizados.size());
+
+            // Actualizar la clase Clientela con la lista recargada de clientes
+            Clientela.setClientes(clientesActualizados);
+        } else {
+            System.out.println("Cliente no encontrado.");
+        }
     }
+
+
 }
