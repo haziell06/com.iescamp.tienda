@@ -75,8 +75,9 @@ public class PedidoDAO implements GenericDAO <Pedido, Integer> {
     }
 
     @Override
-    public void eliminar(Integer numero) {
+    public boolean eliminar(Integer numero) {
         // metodo void, se hará más adelante
+        return false;
     }
 
     @Override

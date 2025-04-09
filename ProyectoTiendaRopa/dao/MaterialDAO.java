@@ -49,21 +49,17 @@ public class MaterialDAO implements GenericDAO <Material, Integer>{
 
     @Override
     public boolean actualizar(Material obj) {
-
         return false;
     }
 
     @Override
-    public void eliminar(Integer codigo) {
-
+    public boolean eliminar(Integer id) {
+        return false;
     }
 
     @Override
     public Material construirDesdeResultSet(ResultSet rs) throws SQLException {
-        return new Material(
-                rs.getInt("codigo"),
-                rs.getString("descripcion")
-        );
+        return null;
     }
 
     //unique

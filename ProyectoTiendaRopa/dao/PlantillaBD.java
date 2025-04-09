@@ -2,6 +2,7 @@ package com.iescamp.tienda.dao;
 
 import com.iescamp.tienda.ConsoleReader;
 import com.iescamp.tienda.model.usuario.cliente.Cliente;
+import com.iescamp.tienda.model.usuario.cliente.Clientela;
 import com.iescamp.tienda.model.usuario.empleado.Empleado;
 
 import java.sql.*;
@@ -66,4 +67,124 @@ public class PlantillaBD {
         }
         return empleados;
     }
+
+
+    // modificar usuario
+    // mediante dni y correo
+    public static void modificarCliente() {
+        ClienteDAO dao = new ClienteDAO();
+        Clientela Clientela = new Clientela();// puede estar mal
+
+        System.out.println("""
+            Como deseas buscar el cliente:
+            1-Por DNI
+            2-Por Correo                    
+            """);
+
+        int opcion = ConsoleReader.readInt("Ingrese la opción: ");
+        Cliente clienteExistente = null;
+
+        switch (opcion) {
+            case 1:
+                // Buscar por DNI
+                String dni = ConsoleReader.readString("Introduce el DNI del cliente: ");
+                clienteExistente = dao.obtenerPorDNI(dni);
+                break;
+            case 2:
+                // Buscar por correo electrónico
+                String email = ConsoleReader.readString("Introduce el correo del cliente: ");
+                clienteExistente = dao.obtenerPorEmail(email);
+                break;
+            default:
+                System.out.println("Opción no válida.");
+                return;
+        }
+
+        if (clienteExistente != null) {
+            // Modificación solo de DNI o correo
+            System.out.println("Cliente encontrado. Procediendo a modificar.");
+
+            switch (opcion) {
+                case 1:
+                    // Modificar DNI
+                    String nuevoDNI = ConsoleReader.readString("Nuevo DNI (deja vacío para no modificar): ");
+                    if (!nuevoDNI.isEmpty()) {
+                        clienteExistente.setDni(nuevoDNI);
+                    }
+                    break;
+                case 2:
+                    // Modificar correo
+                    String nuevoCorreo = ConsoleReader.readString("Nuevo correo (deja vacío para no modificar): ");
+                    if (!nuevoCorreo.isEmpty()) {
+                        clienteExistente.setE_mail(nuevoCorreo);
+                    }
+                    break;
+            }
+
+            // Actualizar en la base de datos
+            dao.actualizar(clienteExistente);
+            System.out.println("Cliente modificado con éxito.");
+
+            // Recargar la lista de clientes desde la BD
+            List<Cliente> clientesActualizados = dao.obtenerTodos();
+            System.out.println("Clientes recargados desde la BD: " + clientesActualizados.size());
+
+            // Actualizar la clase Clientela con la lista recargada de clientes
+            Clientela.setClientes(clientesActualizados);
+        } else {
+            System.out.println("Cliente no encontrado.");
+        }
+    }
+    // Eliminar Usuario
+    public static void eliminarCliente() {
+        ClienteDAO dao = new ClienteDAO();
+        Clientela Clientela = new Clientela();
+
+        System.out.println("""
+        ¿Cómo deseas buscar el cliente para eliminar?
+        1 - Por DNI
+        2 - Por Correo
+        """);
+
+        int opcion = ConsoleReader.readInt("Ingrese la opción: ");
+        Cliente clienteExistente = null;
+
+        switch (opcion) {
+            case 1:
+                String dni = ConsoleReader.readString("Introduce el DNI del cliente: ");
+                clienteExistente = dao.obtenerPorDNI(dni);
+                break;
+            case 2:
+                String email = ConsoleReader.readString("Introduce el correo del cliente: ");
+                clienteExistente = dao.obtenerPorEmail(email);
+                break;
+            default:
+                System.out.println("Opción no válida.");
+                return;
+        }
+
+        if (clienteExistente != null) {
+            System.out.println("Cliente encontrado: " + clienteExistente);
+            String confirmar = ConsoleReader.readString("¿Estás seguro de que deseas eliminar este cliente? (s/n): ");
+            if (confirmar.equalsIgnoreCase("s")) {
+                boolean eliminado = dao.eliminar(clienteExistente.getDni()); // Asumiendo que Cliente tiene un getId()
+                if (eliminado) {
+                    System.out.println("Cliente eliminado correctamente.");
+
+                    List<Cliente> clientesActualizados = dao.obtenerTodos();
+                    System.out.println("Lista recargada. Total clientes: " + clientesActualizados.size());
+
+                    Clientela.setClientes(clientesActualizados);
+                } else {
+                    System.out.println("No se pudo eliminar el cliente.");
+                }
+            } else {
+                System.out.println("Eliminación cancelada.");
+            }
+        } else {
+            System.out.println("Cliente no encontrado.");
+        }
+    }
+
+
 }

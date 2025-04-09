@@ -53,8 +53,9 @@ public class DepartamentoDAO implements GenericDAO<Departamento, Integer>{
     }
 
     @Override
-    public void eliminar(Integer codigo) {
+    public boolean eliminar(Integer codigo) {
 
+        return false;
     }
 
     @Override

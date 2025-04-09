@@ -56,8 +56,9 @@ public class ClienteDAO implements GenericDAO <Cliente, String> {
     }
 
     @Override
-    public void eliminar(String DNI) {
+    public boolean eliminar(String DNI) {
         // metodo void, se hará más adelante
+        return false;
     }
 
     @Override

@@ -1,9 +1,12 @@
 package com.iescamp.tienda.dao;
 
 import com.iescamp.tienda.ConsoleReader;
+import com.iescamp.tienda.model.usuario.cliente.Cliente;
+
+import java.sql.SQLException;
 
 public class MenuBD {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         boolean salir = false;
         int opcion;
         while (!salir){
@@ -31,7 +34,7 @@ public class MenuBD {
             }
         }
     }
-    public static void menuClientelaBD(){
+    public static void menuClientelaBD() throws SQLException {
         int opcion;
         do {
             System.out.println("Menú ClientelaBD");
@@ -39,10 +42,11 @@ public class MenuBD {
             System.out.println("2. Añadir usuario");
             System.out.println("3. Cargar clientes desde BD");
             System.out.println("4. Modificar usuario");
-            System.out.println("5. Validar contraseña");
-            System.out.println("6. Añadir pedido");
-            System.out.println("7. Listar pedidos del cliente");
-            System.out.println("8. Volver");
+            System.out.println("5. Eliminar usuario");
+            System.out.println("6. Validar contraseña");
+            System.out.println("7. Añadir pedido");
+            System.out.println("8. Listar pedidos del cliente");
+            System.out.println("9. Volver");
             opcion = ConsoleReader.readInt("Elige una opción: ");
 
             switch (opcion) {
@@ -55,18 +59,25 @@ public class MenuBD {
                 ClientelaBD.cargarClientes();
                     break;
                 case 4:
+                    // modificar usuario
+                    ClientelaBD.modificarEmpleado();
                     break;
                 case 5:
-                ClientelaBD.validarContraseña();
+                    // eliminar usuario
+                    ClientelaBD.eliminarEmpleado();
+
                     break;
                 case 6:
+                    ClientelaBD.validarContraseña();
                     break;
                 case 7:
-                    ClientelaBD.ListarPorPedido(ConsoleReader.readString("Escriba el DNI del cliente: "));
+
                     break;
                 case 8:
-                System.out.println("Volviendo...");
+                    ClientelaBD.ListarPorPedido(ConsoleReader.readString("Escriba el DNI del cliente: "));
                 break;
+                case 9:
+                    System.out.println("Volviendo...");
                 default:
                     System.out.println("Opción no válida.");
             }
@@ -95,11 +106,14 @@ public class MenuBD {
                 case 3:
                     break;
                 case 4:
+                    PlantillaBD.modificarCliente();
                     break;
                 case 5:
                 PlantillaBD.validarContraseña();
                     break;
                 case 6:
+                    // eliminar usuario
+                    PlantillaBD.eliminarCliente();
                     break;
                 case 7:
                     System.out.println("Volviendo...");
@@ -137,8 +151,10 @@ public class MenuBD {
                     CatalogoBD.ListarTodosPorTipo(ConsoleReader.readString("Escribe el tipo de ropa que buscas: "), ConsoleReader.readString("Escribe el tipo de accesorio que buscas: "));
                     break;
                 case 5:
+                    CatalogoBD.modificarArticulo();
                     break;
                 case 6:
+                    CatalogoBD.eliminarArticuloYRecargar();
                     break;
                 case 7:
                     System.out.println("Volviendo...");

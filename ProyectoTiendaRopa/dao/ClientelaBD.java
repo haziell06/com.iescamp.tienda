@@ -2,8 +2,9 @@ package com.iescamp.tienda.dao;
 
 import com.iescamp.tienda.ConsoleReader;
 import com.iescamp.tienda.model.usuario.cliente.Cliente;
-import com.iescamp.tienda.model.usuario.cliente.Clientela;
+import com.iescamp.tienda.model.usuario.empleado.Empleado;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ClientelaBD {
@@ -29,77 +30,113 @@ public class ClientelaBD {
         }
     }
 
-    // modificar usuario
-    // mediante dni y correo
-    public static void modificarCliente(Cliente cliente) {
-        ClienteDAO dao = new ClienteDAO();
-        Clientela Clientela = new Clientela();// puede estar mal
+    public static void ListarPorPedido(String s) {
+    }
+    public static void ListarClientePorDNI(String cliente) {
+    }
+
+
+
+    //modificar empleado
+    public static void modificarEmpleado() throws SQLException {
+        EmpleadoDAO dao = new EmpleadoDAO();
 
         System.out.println("""
-            Como deseas buscar el cliente:
-            1-Por DNI
-            2-Por Correo                    
-            """);
+        ¿Cómo deseas buscar el empleado?
+        1 - Por DNI
+        2 - Por Correo Electrónico
+        """);
 
-        int opcion = ConsoleReader.readInt("Ingrese la opción: ");
-        Cliente clienteExistente = null;
+        int opcion = ConsoleReader.readInt("Seleccione una opción: ");
+        Empleado empleadoExistente = null;
 
         switch (opcion) {
             case 1:
-                // Buscar por DNI
-                String dni = ConsoleReader.readString("Introduce el DNI del cliente: ");
-                clienteExistente = dao.obtenerPorDNI(dni);
+                String dni = ConsoleReader.readString("Introduce el DNI del empleado: ");
+                empleadoExistente = dao.obtenerPorId(dni);
                 break;
             case 2:
-                // Buscar por correo electrónico
-                String email = ConsoleReader.readString("Introduce el correo del cliente: ");
-                clienteExistente = dao.obtenerPorEmail(email);
+                String correo = ConsoleReader.readString("Introduce el correo electrónico del empleado: ");
+                empleadoExistente = dao.obtenerPorEmail(correo);
                 break;
             default:
                 System.out.println("Opción no válida.");
                 return;
         }
 
-        if (clienteExistente != null) {
-            // Modificación solo de DNI o correo
-            System.out.println("Cliente encontrado. Procediendo a modificar.");
+        if (empleadoExistente != null) {
+            System.out.println("Empleado encontrado. Procediendo a modificar.");
 
-            switch (opcion) {
-                case 1:
-                    // Modificar DNI
-                    String nuevoDNI = ConsoleReader.readString("Nuevo DNI (deja vacío para no modificar): ");
-                    if (!nuevoDNI.isEmpty()) {
-                        clienteExistente.setDni(nuevoDNI);
-                    }
-                    break;
-                case 2:
-                    // Modificar correo
-                    String nuevoCorreo = ConsoleReader.readString("Nuevo correo (deja vacío para no modificar): ");
-                    if (!nuevoCorreo.isEmpty()) {
-                        clienteExistente.setE_mail(nuevoCorreo);
-                    }
-                    break;
+            // Modificación solo de nombre o email
+            String nuevoDni = ConsoleReader.readString("Nuevo DNI (deja vacío para no modificar): ");
+            if (!nuevoDni.isEmpty()) {
+                empleadoExistente.setDni(nuevoDni);
             }
 
-            // Actualizar en la base de datos
-            dao.actualizar(clienteExistente);
-            System.out.println("Cliente modificado con éxito.");
+            String nuevoCorreo = ConsoleReader.readString("Nuevo email (deja vacío para no modificar): ");
+            if (!nuevoCorreo.isEmpty()) {
+                empleadoExistente.setE_mail(nuevoCorreo);
+            }
 
-            // Recargar la lista de clientes desde la BD
-            List<Cliente> clientesActualizados = dao.obtenerTodos();
-            System.out.println("Clientes recargados desde la BD: " + clientesActualizados.size());
+            // Guardar en base de datos
+            boolean actualizado = dao.actualizar(empleadoExistente);
+            if (actualizado) {
+                System.out.println("Empleado modificado correctamente:");
+                System.out.println("DNI: " + empleadoExistente.getDni());
+                System.out.println("Correo: " + empleadoExistente.getE_mail());
+            } else {
+                System.out.println("Error al actualizar el empleado.");
+            }
 
-            // Actualizar la clase Clientela con la lista recargada de clientes
-            Clientela.setClientes(clientesActualizados);
         } else {
-            System.out.println("Cliente no encontrado.");
+            System.out.println("No se encontró un empleado con los datos proporcionados.");
+        }
+    }
+    // eliminar empleado
+    public static void eliminarEmpleado() {
+        EmpleadoDAO dao = new EmpleadoDAO();
+
+        System.out.println("""
+        ¿Cómo deseas buscar el empleado a eliminar?
+        1 - Por DNI
+        2 - Por Correo Electrónico
+        """);
+
+        int opcion = ConsoleReader.readInt("Seleccione una opción: ");
+        Empleado empleado = null;
+
+        try {
+            switch (opcion) {
+                case 1:
+                    String dni = ConsoleReader.readString("Introduce el DNI del empleado: ");
+                    empleado = dao.obtenerPorId(dni);
+                    break;
+                case 2:
+                    String correo = ConsoleReader.readString("Introduce el correo electrónico del empleado: ");
+                    empleado = dao.obtenerPorEmail(correo);
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+                    return;
+            }
+
+            if (empleado != null) {
+                System.out.println("Empleado encontrado: " + empleado.getNombre() + " " + empleado.getApellidos());
+                String confirmacion = ConsoleReader.readString("¿Estás seguro de que deseas eliminarlo? (s/n): ");
+                if (confirmacion.equalsIgnoreCase("s")) {
+                    dao.eliminar(empleado.getDni());
+                    System.out.println("Empleado eliminado correctamente.");
+                } else {
+                    System.out.println("Eliminación cancelada.");
+                }
+            } else {
+                System.out.println("No se encontró un empleado con los datos proporcionados.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al intentar eliminar el empleado.");
+            e.printStackTrace();
         }
     }
 
-
-    public static void ListarPorPedido(String s) {
-    }
-
-    public static void ListarClientePorDNI(String cliente) {
-    }
 }

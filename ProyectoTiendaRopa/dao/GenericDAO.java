@@ -9,7 +9,7 @@ public interface GenericDAO<T, K> {
     T obtenerPorId(K id); //obtener por la clave primaria List<T> ();
     List<T> obtenerTodos();
     boolean actualizar(T obj);
-    void eliminar(K id);
+    boolean eliminar(K id);
     T construirDesdeResultSet(ResultSet rs) throws SQLException;
 }
 
