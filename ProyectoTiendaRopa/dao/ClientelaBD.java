@@ -1,6 +1,8 @@
 package com.iescamp.tienda.dao;
 
 import com.iescamp.tienda.ConsoleReader;
+import com.iescamp.tienda.model.articulo.Articulo;
+import com.iescamp.tienda.model.pedido.Pedido;
 import com.iescamp.tienda.model.usuario.cliente.Cliente;
 import com.iescamp.tienda.model.usuario.empleado.Empleado;
 
@@ -34,7 +36,6 @@ public class ClientelaBD {
     }
     public static void ListarClientePorDNI(String cliente) {
     }
-
 
 
     //modificar empleado
@@ -139,4 +140,64 @@ public class ClientelaBD {
         }
     }
 
+    // añadir ciliente
+    public static void anadirCliente() {
+        ClienteDAO dao = new ClienteDAO();
+
+        System.out.println("Añadiendo nuevo cliente...");
+        String dni = ConsoleReader.readString("DNI: ");
+        String nombre = ConsoleReader.readString("Nombre: ");
+        String apellidos = ConsoleReader.readString("Apellidos: ");
+        String email = ConsoleReader.readString("Email: ");
+        String password = ConsoleReader.readString("Contraseña: ");
+        String telefono = ConsoleReader.readString("Teléfono: ");
+
+        Cliente cliente = new Cliente(dni, nombre, apellidos, email, password, telefono);
+
+        if (dao.insertar(cliente)) {
+            System.out.println("Cliente añadido correctamente.");
+        } else {
+            System.out.println("Error al añadir el cliente.");
+        }
+    }
+    public static void anadirPedido() {
+        PedidoDAO pedidoDAO = new PedidoDAO();
+        ArticuloDAO articuloDAO = new ArticuloDAO();
+        ClienteDAO clienteDAO = new ClienteDAO();
+
+        System.out.println("Creando un nuevo pedido...");
+
+        String dniCliente = ConsoleReader.readString("DNI del cliente: ");
+        Cliente cliente = clienteDAO.obtenerPorId(dniCliente);
+
+        if (cliente == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+
+        Pedido pedido = new Pedido();
+        pedido.setCliente(cliente);
+
+        boolean agregarMas = true;
+        while (agregarMas) {
+            int codArticulo = ConsoleReader.readInt("Código del artículo: ");
+            Articulo articulo = articuloDAO.obtenerPorId(codArticulo);
+
+            if (articulo != null) {
+                int cantidad = ConsoleReader.readInt("Cantidad: ");
+                pedido.agregarArticulo(articulo, cantidad);
+                System.out.println("Artículo añadido al pedido.");
+            } else {
+                System.out.println("Artículo no encontrado.");
+            }
+
+            agregarMas = ConsoleReader.readBoolean("¿Deseas añadir otro artículo? (true/false): ");
+        }
+
+        if (pedidoDAO.insertar(pedido)) {
+            System.out.println("Pedido registrado correctamente.");
+        } else {
+            System.out.println("Error al registrar el pedido.");
+        }
+    }
 }
