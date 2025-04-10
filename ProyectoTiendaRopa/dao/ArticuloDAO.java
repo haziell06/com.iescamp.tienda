@@ -17,8 +17,9 @@ import java.util.List;
 
 public class ArticuloDAO implements GenericDAO <Articulo, Integer> {
     @Override
-    public void insertar(Articulo obj) {
+    public boolean insertar(Articulo obj) {
         // metodo void, se hará más adelante
+        return false;
     }
 
     @Override
@@ -200,4 +201,7 @@ public class ArticuloDAO implements GenericDAO <Articulo, Integer> {
     }
 
 
+    public Articulo añadirArticulo() {
+        return null;
+    }
 }
