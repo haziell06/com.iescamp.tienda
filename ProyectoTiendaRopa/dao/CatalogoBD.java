@@ -138,6 +138,26 @@ public class CatalogoBD {
     private static List<Articulo> obtenerTodos() {
         return obtenerTodos();
     }
+    public static void anadirArticulo() {
+        ArticuloDAO dao = new ArticuloDAO();
+        Articulo nuevo = dao.añadirArticulo();
 
+        if (nuevo == null) {
+            System.out.println("No se pudo crear el artículo. Operación cancelada.");
+            return;
+        }
 
+        boolean insertado = dao.insertar(nuevo);
+        if (insertado) {
+            System.out.println("Artículo añadido correctamente.");
+        } else {
+            System.out.println("Error al añadir el artículo.");
+            return;
+        }
+        List<Articulo> articulosActualizados = dao.obtenerTodos();
+        Catalogo catalogo = new Catalogo();
+        catalogo.setCatalogo(new ArrayList<>(articulosActualizados));
+        System.out.println("Catálogo actualizado. Total artículos: " + articulosActualizados.size());
+    }
 }
+
