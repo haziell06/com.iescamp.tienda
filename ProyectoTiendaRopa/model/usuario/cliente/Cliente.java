@@ -37,13 +37,17 @@ public class Cliente extends Usuario {
             @JsonProperty("numeroPedidos") int numeroPedidos,
             @JsonProperty("metodoPago") MetodoPago metodoPago,
             @JsonProperty("pedidos") ArrayList<Pedido> pedidos) {
-        super(dni, nombre, apellidos, direccion, telefono, e_mail, f_nacimiento, pass, activo);
+        super(dni, nombre, apellidos, direccion, telefono, e_mail);
         this.dir_envio = dir_envio;
         this.saldo_cuenta = saldo_cuenta;
         this.tarjeta_fidelizacion = tarjeta_fidelizacion;
         this.numeroPedidos = numeroPedidos;
         this.metodoPago = metodoPago;
         this.pedidos = pedidos;
+    }
+
+    public Cliente(String dni, String nombre, String apellidos, String email, String password, String telefono) {
+        super(dni, nombre, apellidos, email, password, telefono);
     }
 
 
