@@ -185,6 +185,23 @@ public class PlantillaBD {
             System.out.println("Cliente no encontrado.");
         }
     }
+    public static void anadirEmpleado() {
+        EmpleadoDAO dao = new EmpleadoDAO();
+        Empleado nuevo = dao.añadirEmpleado();
 
+        boolean insertado = dao.insertar(nuevo);
+        if (insertado) {
+            System.out.println("Empleado añadido correctamente.");
+        } else {
+            System.out.println("Error al añadir el empleado.");
+            return;
+        }
 
+        List<Empleado> empleadosActualizados = dao.obtenerTodos();
+        System.out.println("Empleados actualizados: " + empleadosActualizados.size());
+        for (Empleado e : empleadosActualizados) {
+            System.out.println("DNI: " + e.getDni() + " | Nombre: " + e.getNombre());
+        }
+    }
 }
+
