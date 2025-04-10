@@ -16,8 +16,9 @@ import java.util.List;
 public class PedidoDAO implements GenericDAO <Pedido, Integer> {
 
     @Override
-    public void insertar(Pedido obj) {
+    public boolean insertar(Pedido obj) {
         // metodo void, se hará más adelante
+        return false;
     }
 
     @Override
