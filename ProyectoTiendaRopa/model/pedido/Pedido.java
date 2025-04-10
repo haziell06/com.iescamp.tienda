@@ -1,6 +1,7 @@
 package com.iescamp.tienda.model.pedido;
 
 import com.iescamp.tienda.model.MetodoPago;
+import com.iescamp.tienda.model.articulo.Articulo;
 import com.iescamp.tienda.model.usuario.cliente.Cliente;
 
 import java.time.LocalDate;
@@ -25,6 +26,10 @@ public class Pedido{
         this.m_pago = m_pago;
         this.DNI_cliente = cliente;
         this.lineaPedidos = lineaPedidos;
+    }
+
+    public Pedido() {
+
     }
 
     public int getNumero() {
@@ -107,4 +112,11 @@ public class Pedido{
                 ", lineaPedidos=" + lineaPedidos +
                 '}';
     }
+
+    public void setCliente(Cliente cliente) {
+    }
+
+    public void agregarArticulo(Articulo articulo, int cantidad) {
+    }
 }
+
