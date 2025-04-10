@@ -1,7 +1,6 @@
 package com.iescamp.tienda.dao;
 
 
-import com.iescamp.tienda.ConsoleReader;
 import com.iescamp.tienda.model.usuario.empleado.Empleado;
 
 import java.sql.*;
@@ -11,8 +10,9 @@ import java.util.List;
 
 public class EmpleadoDAO implements GenericDAO<Empleado, String> {
     @Override
-    public void insertar(Empleado obj) {
+    public boolean insertar(Empleado obj) {
 
+        return false;
     }
 
     @Override
@@ -141,7 +141,8 @@ public class EmpleadoDAO implements GenericDAO<Empleado, String> {
     }
 
 
-
-
-
+    public Empleado añadirEmpleado() {
+        return null;
+    }
 }
+
