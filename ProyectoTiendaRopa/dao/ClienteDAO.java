@@ -12,8 +12,9 @@ import java.util.List;
 public class ClienteDAO implements GenericDAO <Cliente, String> {
 
     @Override
-    public void insertar(Cliente obj) {
+    public boolean insertar(Cliente obj) {
         // metodo void, se hará más adelante
+        return false;
     }
 
     @Override

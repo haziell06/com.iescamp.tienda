@@ -54,6 +54,7 @@ public class MenuBD {
                     ClientelaBD.ListarClientePorDNI(ConsoleReader.readString("Escriba el DNI del cliente: "));
                     break;
                 case 2:
+                    ClientelaBD.anadirCliente();
                     break;
                 case 3:
                     ClientelaBD.cargarClientes();

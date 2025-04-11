@@ -9,8 +9,9 @@ import java.util.List;
 
 public class MetodoPagoDAO implements GenericDAO <MetodoPago, Integer> {
     @Override
-    public void insertar(MetodoPago obj) {
+    public boolean insertar(MetodoPago obj) {
 
+        return false;
     }
 
     @Override

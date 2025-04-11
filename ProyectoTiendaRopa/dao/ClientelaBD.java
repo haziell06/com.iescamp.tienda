@@ -6,6 +6,9 @@ import com.iescamp.tienda.model.pedido.Pedido;
 import com.iescamp.tienda.model.usuario.cliente.Cliente;
 import com.iescamp.tienda.model.usuario.empleado.Empleado;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 

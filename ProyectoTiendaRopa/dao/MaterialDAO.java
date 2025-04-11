@@ -10,8 +10,9 @@ import java.util.List;
 public class MaterialDAO implements GenericDAO <Material, Integer>{
 
     @Override
-    public void insertar(Material obj) {
+    public boolean insertar(Material obj) {
 
+        return false;
     }
 
     @Override

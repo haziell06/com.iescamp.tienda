@@ -9,8 +9,9 @@ import java.util.List;
 
 public class DepartamentoDAO implements GenericDAO<Departamento, Integer>{
     @Override
-    public void insertar(Departamento obj) {
+    public boolean insertar(Departamento obj) {
 
+        return false;
     }
 
     @Override
