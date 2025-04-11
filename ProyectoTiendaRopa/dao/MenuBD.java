@@ -60,13 +60,12 @@ public class MenuBD {
                     ClientelaBD.cargarClientes();
                     break;
                 case 4:
-                    // modificar usuario
-                    ClientelaBD.modificarEmpleado();
+                    // modificar cliente
+                    ClientelaBD.modificarCliente();
                     break;
                 case 5:
-                    // eliminar usuario
-                    ClientelaBD.eliminarEmpleado();
-
+                    // eliminar cliente
+                    ClientelaBD.eliminarCliente();
                     break;
                 case 6:
                     ClientelaBD.validarContraseña();
@@ -84,7 +83,7 @@ public class MenuBD {
             }
         } while (opcion != 0);
     }
-    public static void menuPlantillaBD(){
+    public static void menuPlantillaBD() throws SQLException {
         int opcion;
         do {
             System.out.println("Menú PlantillaBD");
@@ -108,14 +107,14 @@ public class MenuBD {
                     PlantillaBD.anadirEmpleado();
                     break;
                 case 4:
-                    PlantillaBD.modificarCliente();
+                    PlantillaBD.modificarEmpleado();
                     break;
                 case 5:
                     PlantillaBD.validarContraseña();
                     break;
                 case 6:
                     // eliminar usuario
-                    PlantillaBD.eliminarCliente();
+                    PlantillaBD.eliminarEmpleado();
                     break;
                 case 7:
                     System.out.println("Volviendo...");

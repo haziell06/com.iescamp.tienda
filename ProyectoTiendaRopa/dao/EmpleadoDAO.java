@@ -1,6 +1,7 @@
 package com.iescamp.tienda.dao;
 
 
+import com.iescamp.tienda.ConsoleReader;
 import com.iescamp.tienda.model.usuario.empleado.Empleado;
 
 import java.sql.*;
@@ -140,9 +141,12 @@ public class EmpleadoDAO implements GenericDAO<Empleado, String> {
         return empleado;
     }
 
-
+    // añadir empleado?
     public Empleado añadirEmpleado() {
         return null;
     }
+
+
+
 }
 
