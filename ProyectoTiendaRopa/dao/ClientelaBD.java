@@ -32,9 +32,41 @@ public class ClientelaBD {
         }
     }
 
-    public static void ListarPorPedido(String s) {
+    public static Cliente ListarPorPedido(String DNI) {
+        String sql = "select p.* \n" +
+                "from pedido p join cliente c\n" +
+                "on  p.DNI_cliente = c.DNI\n" +
+                "where c.DNI = ?;";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, DNI);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    ClienteDAO dao = new ClienteDAO();
+                    Cliente cliente = dao.construirDesdeResultSet(rs);
+                    return cliente;                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
-    public static void ListarClientePorDNI(String cliente) {
+    public static Cliente ListarClientePorDNI(String DNI) {
+        String sql = "SELECT * FROM CLIENTE WHERE DNI = ?";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, DNI);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    ClienteDAO dao = new ClienteDAO();
+                    Cliente cliente = dao.construirDesdeResultSet(rs);
+                    return cliente;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
