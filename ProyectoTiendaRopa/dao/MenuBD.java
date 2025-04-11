@@ -56,7 +56,7 @@ public class MenuBD {
                 case 2:
                     break;
                 case 3:
-                ClientelaBD.cargarClientes();
+                    ClientelaBD.cargarClientes();
                     break;
                 case 4:
                     // modificar usuario
@@ -71,11 +71,11 @@ public class MenuBD {
                     ClientelaBD.validarContraseña();
                     break;
                 case 7:
-
+                    ClientelaBD.anadirPedido();
                     break;
                 case 8:
                     ClientelaBD.ListarPorPedido(ConsoleReader.readString("Escriba el DNI del cliente: "));
-                break;
+                    break;
                 case 9:
                     System.out.println("Volviendo...");
                 default:
@@ -101,15 +101,16 @@ public class MenuBD {
                     PlantillaBD.ListarEmpleadoPorDNI(ConsoleReader.readString("Escriba el DNI del empleado: "));
                     break;
                 case 2:
-                PlantillaBD.cargarEmpleados();
+                    PlantillaBD.cargarEmpleados();
                     break;
                 case 3:
+                    PlantillaBD.anadirEmpleado();
                     break;
                 case 4:
                     PlantillaBD.modificarCliente();
                     break;
                 case 5:
-                PlantillaBD.validarContraseña();
+                    PlantillaBD.validarContraseña();
                     break;
                 case 6:
                     // eliminar usuario
@@ -141,9 +142,10 @@ public class MenuBD {
                     CatalogoBD.ListarArticuloPorID(ConsoleReader.readInt("Escriba el codigo del articulo: "));
                     break;
                 case 2:
+                    CatalogoBD.anadirArticulo();
                     break;
                 case 3:
-                CatalogoBD.cargarArticulos();
+                    CatalogoBD.cargarArticulos();
                     break;
                 case 4:
                     // La consulta de mysql solo funciona si uno de los dos tipos sea null si lo que quieres es devolver solo un tipo especifico de articulo
