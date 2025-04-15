@@ -1,0 +1,35 @@
+.bc-color{
+    -fx-background-color: rgb(234, 234, 234);
+    color: black;
+}
+#anchor-pane-main{
+    -fx-font-size:16px;
+}
+    #btn-insertar{
+    -fx-background-color: black;
+}
+.txt-titulo{
+
+}
+
+.txt-descripcion{
+
+}
+
+.txt-price{
+    font-weight: bolder;
+    background-color: white;
+}
+
+.txt-filtro{
+    border-color: black ;
+    border-width: 3px;
+    font-weight: bold;
+    border-radius: 999px;
+    background-color: white;
+}
+
+.img1{
+    background-image: url(https://www.mommeandmore.com/cdn/shop/files/F7410FD2-6BD8-45F0-A733-41812699D62B.jpg?v=1727957787);
+    
+}

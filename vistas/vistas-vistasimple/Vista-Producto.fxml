@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+
+        <!-- Imagen del producto -->
+        <ImageView fx:id="imgProducto" fitHeight="400.0" fitWidth="250.0" layoutX="20.0" layoutY="30.0" preserveRatio="true">
+         <image>
+            <Image url="@blusa-rosas.jpg" />
+         </image></ImageView>
+
+        <!-- VBox con Título, Precio y Botón -->
+        <VBox layoutX="300.0" layoutY="30.0" spacing="10.0">
+            <Label fx:id="lblTitulo" style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Blusa de flores" />
+            <Label fx:id="lblPrecio" style="-fx-font-size: 20px; -fx-text-fill: #333;" text="19.99 €" />
+            <Button fx:id="btnAgregar" style="-fx-background-color: black; -fx-text-fill: white;" text="+ Añadir al carrito" />
+        </VBox>
+
+        <!-- Descripción -->
+        <Label layoutX="314.0" layoutY="182.0" style="-fx-font-weight: bold;" text="descripción" />
+        <TextArea fx:id="txtDescripcion" editable="false" layoutX="304.0" layoutY="200.0" prefHeight="100.0" prefWidth="470.0" text="Blusa de flores, color lila, con cierre de cordón y estampado primaveral. Ideal para el verano." wrapText="true" />
+
+        <!-- Chips -->
+        <HBox layoutX="300.0" layoutY="308.0" spacing="10.0">
+            <Label style="-fx-background-color: #f0f0f0; -fx-padding: 5px 10px; -fx-border-radius: 15px; -fx-background-radius: 15px;" text="color lila" />
+            <Label style="-fx-background-color: #f0f0f0; -fx-padding: 5px 10px; -fx-border-radius: 15px; -fx-background-radius: 15px;" text="cierre de cordón" />
+            <Label style="-fx-background-color: #f0f0f0; -fx-padding: 5px 10px; -fx-border-radius: 15px; -fx-background-radius: 15px;" text="estampado de flores" />
+        </HBox>
+
+    </children>
+</AnchorPane>
