@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="your.package.Controller"
+            prefWidth="800" prefHeight="600" stylesheets="@styles.css">
+
+    <!-- Top -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-bar">
+            <Label text="☰" styleClass="menu-icon"/>
+            <Label text="secondhand" styleClass="logo"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <TextField promptText="Buscar..." prefWidth="200"/>
+            <Label text="🛒"/>
+            <Label text="👤"/>
+        </HBox>
+    </top>
+
+    <!-- Center -->
+    <center>
+        <HBox spacing="0">
+            <!-- Ropa -->
+            <StackPane fx:id="ropaPane" prefWidth="400" styleClass="background-left">
+                <Label text="ROPA" styleClass="main-text"/>
+            </StackPane>
+
+            <!-- Accesorios -->
+            <StackPane fx:id="accesoriosPane" prefWidth="400" styleClass="background-right">
+                <Label text="ACCESORIOS" styleClass="main-text"/>
+            </StackPane>
+        </HBox>
+    </center>
+
+    <!-- Bottom -->
+    <bottom>
+        <VBox spacing="10" styleClass="footer">
+            <HBox spacing="40" alignment="CENTER">
+                
+                <!-- Ayuda -->
+                <VBox>
+                    <Label text="AYUDA" styleClass="footer-title"/>
+                    <Label text="Preguntas frecuentes"/>
+                    <Label text="Estado de mi pedido"/>
+                    <Label text="Devoluciones"/>
+                    <Label text="Envíos"/>
+                </VBox>
+
+                <!-- Métodos de pago -->
+                <VBox>
+                    <Label text="MÉTODOS DE PAGO" styleClass="footer-title"/>
+                    <HBox spacing="10">
+                        <Rectangle width="40" height="20" styleClass="gray-box"/>
+                        <Rectangle width="40" height="20" styleClass="gray-box"/>
+                        <Rectangle width="40" height="20" styleClass="gray-box"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Síguenos -->
+                <VBox>
+                    <Label text="¡SÍGUENOS!" styleClass="footer-title"/>
+                    <HBox spacing="10">
+                        <Circle radius="10" styleClass="gray-circle"/>
+                        <Circle radius="10" styleClass="gray-circle"/>
+                        <Circle radius="10" styleClass="gray-circle"/>
+                        <Circle radius="10" styleClass="gray-circle"/>
+                    </HBox>
+                </VBox>
+
+            </HBox>
+            <Label text="Política de privacidad | Condiciones de compra | Política de cookies | Preferencia de cookies" styleClass="footer-links"/>
+        </VBox>
+    </bottom>
+
+</BorderPane>

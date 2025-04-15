@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="your.package.Controller">
+
+    <!-- Top -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-bar">
+           <children>
+               <Label styleClass="menu-icon" text="☰" />
+               <Label styleClass="logo" text="secondhand" />
+               <Region HBox.hgrow="ALWAYS" />
+               <TextField prefWidth="200" promptText="Buscar..." />
+               <Label text="👤" />
+               <Label text="🛒" />
+           </children>
+        </HBox>
+    </top>
+
+    <!-- Center -->
+    <center>
+        <HBox spacing="0">
+           <children>
+               <!-- Ropa -->
+               <StackPane fx:id="ropaPane" prefWidth="400" styleClass="background-left" />
+   
+                           <!-- Accesorios -->
+               <StackPane fx:id="accesoriosPane" prefWidth="400" styleClass="background-right" />
+           </children>
+        </HBox>
+    </center>
+
+    <!-- Bottom -->
+    <bottom>
+        <VBox spacing="10" styleClass="footer">
+           <children>
+               <HBox alignment="CENTER" spacing="40">
+                  <children>
+                      
+                      <!-- Ayuda -->
+                      <VBox>
+                         <children>
+                             <Label styleClass="footer-title" text="AYUDA" />
+                             <Label text="Preguntas frecuentes" />
+                             <Label text="Estado de mi pedido" />
+                             <Label text="Devoluciones" />
+                             <Label text="Envíos" />
+                         </children>
+                      </VBox>
+      
+                      <!-- Métodos de pago -->
+                      <VBox>
+         <children>
+                             <Label styleClass="footer-title" text="MÉTODOS DE PAGO" />
+                             <HBox spacing="10">
+                                <children>
+                                    <Rectangle height="20" styleClass="gray-box" width="40" />
+                                    <Rectangle height="20" styleClass="gray-box" width="40" />
+                                    <Rectangle height="20" styleClass="gray-box" width="40" />
+                                </children>
+                             </HBox>
+         </children>
+                      </VBox>
+      
+                      <!-- Síguenos -->
+                      <VBox>
+         <children>
+                             <Label styleClass="footer-title" text="¡SÍGUENOS!" />
+                             <HBox spacing="10">
+                                <children>
+                                    <Circle radius="10" styleClass="gray-circle" />
+                                    <Circle radius="10" styleClass="gray-circle" />
+                                    <Circle radius="10" styleClass="gray-circle" />
+                                    <Circle radius="10" styleClass="gray-circle" />
+                                </children>
+                             </HBox>
+         </children>
+                      </VBox>
+                  </children>
+   
+               </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="5.0" prefWidth="800.0">
+               <children>
+                     <Label alignment="TOP_CENTER" styleClass="footer-links" text="Política de privacidad | Condiciones de compra | Política de cookies | Preferencia de cookies" />
+               </children>
+            </HBox>
+           </children>
+        </VBox>
+    </bottom>
+   <stylesheets>
+      <URL value="@styles.css" />
+      <URL value="@src/main/resources/style.css" />
+   </stylesheets>
+
+</BorderPane>

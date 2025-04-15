@@ -1,0 +1,52 @@
+.header-bar {
+    -fx-padding: 10;
+    -fx-alignment: center;
+}
+
+.menu-icon {
+    -fx-font-size: 20px;
+}
+
+.logo {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.background-left {
+    -fx-background-image: url("ropa.jpg");
+    -fx-background-size: cover;
+    -fx-alignment: center;
+}
+
+.background-right {
+    -fx-background-image: url("accesorios.jpg");
+    -fx-background-size: cover;
+    -fx-alignment: center;
+}
+
+.main-text {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.footer {
+    -fx-padding: 10;
+    -fx-background-color: #f4f4f4;
+}
+
+.footer-title {
+    -fx-font-weight: bold;
+}
+
+.footer-links {
+    -fx-font-size: 10px;
+}
+
+.gray-box {
+    -fx-fill: #cccccc;
+}
+
+.gray-circle {
+    -fx-fill: #cccccc;
+}
